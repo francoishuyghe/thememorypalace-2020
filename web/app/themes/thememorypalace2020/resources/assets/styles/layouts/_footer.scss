@@ -1,0 +1,17 @@
+footer.content-info{
+    background: theme-color(black);
+    color: theme-color(white); 
+    padding: $grid-gutter 0;
+    text-align: center;
+
+    #menu-footer-menu{
+        li{
+            list-style: none;
+            display: inline-block;
+
+            a{
+                color: theme-color(white);
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
-<article @php post_class() @endphp>
+<div class="container">
+<article {!! post_class() !!}>
   <header>
     <h1 class="entry-title">{!! get_the_title() !!}</h1>
     @include('partials/entry-meta')
@@ -11,3 +12,4 @@
   </footer>
   @php comments_template('/partials/comments.blade.php') @endphp
 </article>
+</div>

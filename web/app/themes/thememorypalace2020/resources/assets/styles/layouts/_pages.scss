@@ -1,0 +1,30 @@
+.page.home{
+    #top{
+        background-color: blue;
+        height: 100vh;
+    }
+
+    #episodes{
+        padding: $grid-gutter 0;
+
+        .container{
+            max-width: 800px;
+        }
+    }
+}
+
+.page.episodes{
+    #intro{
+        text-align: center;
+    }
+}
+
+
+// EPISODE BLOCKS
+
+.episode{
+    background-color: #eee;
+    border: 1px solid grey;
+    padding: $grid-gutter / 2;
+    margin-bottom: $grid-gutter / 2;
+}

@@ -1,0 +1,19 @@
+.content-wrap{
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+h2{
+    font-size: 1.5em;
+    
+    &.long{
+        font-size: 1.2em;
+        text-transform: uppercase;
+        border-bottom: 1px solid grey;
+    }
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}

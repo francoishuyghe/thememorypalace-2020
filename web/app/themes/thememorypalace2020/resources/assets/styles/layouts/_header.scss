@@ -1,7 +1,32 @@
-.banner .nav li {
-  @extend .nav-item;
-}
+.banner{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: theme-color(white);
+  display: flex;
+  padding: 10px $grid-gutter;
 
-.banner .nav a {
-  @extend .nav-link;
+  .nav-primary{
+    flex: 1;
+    text-align: right;
+
+    ul{
+      justify-content: flex-end;
+    }
+
+    li {
+      @extend .nav-item;
+      list-style: none;
+      display: inline-block;
+
+      li{
+        display: none;
+      }
+    }
+
+    a {
+      @extend .nav-link;
+    }
+  } 
 }
