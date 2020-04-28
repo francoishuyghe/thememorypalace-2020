@@ -3,13 +3,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: theme-color(white);
+  z-index: 999;
+  background-color: theme-color(primary);
   display: flex;
-  padding: 10px $grid-gutter;
+  padding: 10px $grid-gutter / 2;
+  justify-content: space-between;
+
+  a{
+    color: theme-color(white);
+  }
 
   .nav-primary{
-    flex: 1;
-    text-align: right;
 
     ul{
       justify-content: flex-end;
@@ -28,5 +32,11 @@
     a {
       @extend .nav-link;
     }
-  } 
+  }
+
+  .subscribe{
+    display: inline-block;
+    padding: .5em 1em;
+    border-radius: 2em;
+  }
 }

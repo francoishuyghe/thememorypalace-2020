@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Sober\Controller\Controller;
+use WP_Query;
 
 class App extends Controller
 {
@@ -10,6 +11,17 @@ class App extends Controller
     {
         return get_bloginfo('name');
     }
+
+    public static function themeColor() {
+	    $args = array(
+	    	'post_type' => 'post',
+	    	'posts_per_page' => 1,
+	    );
+        $the_query = new WP_Query( $args );
+        $latestEpisode = $the_query->posts;
+        $color = get_field('color', $latestEpisode[0]->ID);
+	    return $color;
+	}
 
     public static function title()
     {

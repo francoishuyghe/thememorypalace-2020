@@ -7,4 +7,7 @@
   {{-- Anonymous Pro --}}
   <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap" rel="stylesheet">
   
+  {{-- Font Awesome --}}
+  <script src="https://kit.fontawesome.com/cc06fa7bc5.js" crossorigin="anonymous"></script>
+  
 </head>

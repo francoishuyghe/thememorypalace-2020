@@ -1,12 +1,4 @@
 .page.home{
-    .banner{
-        background-color: transparent;
-
-        a{
-            color: theme-color(white);
-        }
-    }
-
     .content-wrap{
         padding-top: 0;
     }
@@ -16,8 +8,27 @@
         color: theme-color(white);
         height: 100vh;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: row;
+
+        
+        #latestEpisode,
+        #intro{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: $grid-gutter;
+            flex-direction: column;
+        }
+
+        .shuffle{
+            position: absolute;
+            left: $grid-gutter / 2;
+            bottom: $grid-gutter / 2;
+            border: 1px solid theme-color(white);
+            padding: 5px 10px;
+            border-radius: 100%;
+        }
     }
 
     #episodes{
@@ -25,7 +36,16 @@
         background-color: theme-color(grey);
 
         .container{
-            max-width: 800px;
+            max-width: 600px;
+        }
+
+        .button{
+            margin: auto;
+        }
+
+        .episodes-footer{
+            margin-top: $grid-gutter;
+            text-align: center;
         }
     }
 }
@@ -43,4 +63,29 @@
     padding: $grid-gutter / 2;
     margin-bottom: $grid-gutter / 2;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+    background-color: theme-color(white);
+
+    .info{
+        display: flex;
+        flex-direction: column;
+
+        .header{
+            color: theme-color(darkgrey);
+        }
+
+        .title{
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer{
+            display: flex;
+            justify-content: space-between;
+
+            .info{
+                color: theme-color(darkgrey);
+            }
+        }
+    }
 }
