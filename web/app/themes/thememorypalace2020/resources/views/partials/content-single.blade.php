@@ -55,6 +55,6 @@
   </div>
   <div id="episode" style="background-color: {{ colourBrightness($color, 0.5) }}">
     @php $episode = $post @endphp
-    @include('partials.episode-feature')
+    @include('partials.episode-block')
   </div>
 </section>

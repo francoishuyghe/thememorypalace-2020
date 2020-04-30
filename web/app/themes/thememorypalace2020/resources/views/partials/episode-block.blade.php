@@ -1,9 +1,11 @@
 <div class="episode episode-{{ $episode->ID }}">
     <div class="row">
-        <div class="col-md-4 thumbnail">
-            {!! get_the_post_thumbnail($episode->ID, 'medium') !!}
+        <div class="thumbnail" style="background: {{ the_field('color', $episode->ID ) }}">
+            <div class="white">
+                <div class="image" style="background-image: url({{ get_the_post_thumbnail_url($episode->ID, 'medium') }});"></div>
+            </div>
         </div>
-        <div class="col-md-8 info">
+        <div class="info">
             <div class="header">
                 {{ get_the_date('', $episode->ID) }}
             </div>

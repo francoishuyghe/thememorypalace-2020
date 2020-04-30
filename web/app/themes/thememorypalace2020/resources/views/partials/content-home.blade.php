@@ -48,7 +48,7 @@
     </div>
 <div id="latestEpisode" style="background-color: {{ colourBrightness($color, 0.5) }}">
         @php $episode = $latest_episode[0] @endphp
-        @include('partials.episode-feature')
+        @include('partials.episode-block')
     </div>
     <div class="shuffle"><i class="fal fa-random"></i></div>
 </section>

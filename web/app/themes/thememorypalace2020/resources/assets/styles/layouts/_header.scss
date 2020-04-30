@@ -1,16 +1,31 @@
 .banner{
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
   background-color: theme-color(primary);
   display: flex;
+  align-items: center;
   padding: 10px $grid-gutter / 2;
   justify-content: space-between;
+  margin-bottom: $grid-gutter;
+
+  &.fixed{
+    position: fixed;
+  }
+
+  .brand{
+    font-family: MillerDisplay, serif;
+    font-size: 50px;
+    text-transform: lowercase;
+    font-weight: 600;
+  }
 
   a{
+    font-family: ApercuPro, sans-serif;
     color: theme-color(white);
+    text-decoration: none;
+    text-transform: uppercase;
   }
 
   .nav-primary{

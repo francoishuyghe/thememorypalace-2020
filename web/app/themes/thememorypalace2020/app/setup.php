@@ -136,3 +136,8 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();
 	
 }
+
+// New Footer Menu
+add_action( 'after_setup_theme', function() {
+    register_nav_menu( 'footer', __( 'Footer Menu' ) );
+  } );

@@ -11,5 +11,5 @@
       $postColor = App::themeColor();
     }
   @endphp
-  <a class="subscribe" href="https://itunes.com" style="background-color: {{ $postColor }}">Subscribe</a>
+  <a class="subscribe" target="_blank" href="https://podcasts.apple.com/podcast/the-memory-palace/id299436963" style="background-color: {{ $postColor }}">Subscribe</a>
 </header>

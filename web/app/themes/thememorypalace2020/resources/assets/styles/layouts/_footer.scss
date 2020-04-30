@@ -1,16 +1,21 @@
 footer.content-info{
-    background: theme-color(black);
-    color: theme-color(white); 
     padding: $grid-gutter 0;
     text-align: center;
 
-    #menu-footer-menu{
+    .footer-nav{
+        text-align: right;
+
         li{
             list-style: none;
             display: inline-block;
+            margin-left: $grid-gutter / 2;
 
             a{
-                color: theme-color(white);
+                text-decoration: none;
+
+                &:hover{
+                    text-decoration: underline;
+                }
             }
         }
     }
