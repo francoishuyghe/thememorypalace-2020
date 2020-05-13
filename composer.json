@@ -36,7 +36,7 @@
       "type": "package",
       "package": {
         "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.7.12",
+        "version": "5.8.11",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
@@ -54,15 +54,16 @@
     "composer/installers": "^1.4",
     "vlucas/phpdotenv": "^3.0.0",
     "oscarotero/env": "^1.1.0",
-    "roots/wordpress": "5.3.2",
+    "roots/wordpress": "5.4.1",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.0.0",
     "wpackagist-plugin/advanced-custom-fields": "^5.7",
     "advanced-custom-fields/advanced-custom-fields-pro": "^5.0.0",
-    "wpackagist-plugin/intuitive-custom-post-order": "^3.1.1",
+    "wpackagist-plugin/post-types-order": "^1.9.4.3",
     "wpackagist-plugin/duplicate-post": "^3.2",
     "deliciousbrains-plugin/wp-migrate-db-pro": "^1.9.8",
-    "deliciousbrains-plugin/wp-migrate-db-pro-media-files": "^1.4"
+    "deliciousbrains-plugin/wp-migrate-db-pro-media-files": "^1.4",
+    "wpackagist-plugin/seriously-simple-podcasting":"2.0.4"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",

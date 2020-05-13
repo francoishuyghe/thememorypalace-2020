@@ -141,3 +141,6 @@ if( function_exists('acf_add_options_page') ) {
 add_action( 'after_setup_theme', function() {
     register_nav_menu( 'footer', __( 'Footer Menu' ) );
   } );
+
+  //Allow audio metadat functions
+require_once( ABSPATH . 'wp-admin/includes/media.php' );

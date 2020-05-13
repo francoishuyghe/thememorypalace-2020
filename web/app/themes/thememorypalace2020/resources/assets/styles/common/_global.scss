@@ -16,6 +16,13 @@ h2{
     border-bottom: 1px solid grey;
 }
 
+h5{
+    font-family: ApercuPro, sans-serif;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: theme-color(darkgrey);
+}
+
 a{
     text-decoration: underline;
     color: inherit;

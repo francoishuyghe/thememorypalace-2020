@@ -102,19 +102,48 @@
 .episode{
     padding: $grid-gutter / 2;
     margin-bottom: $grid-gutter / 2;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-    background-color: theme-color(white);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    display: flex;
+    //background-color: theme-color(white);
 
     .thumbnail{
+        position: relative;
         margin: auto;
         width: 200px;
         height: 200px;
         background: theme-color(primary);
+        cursor: pointer;
+
+        &:hover{
+            .play{
+                opacity: 1;
+            }
+
+            .white{
+                transform: scale(1.05);
+
+                .image{
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        .play{
+            opacity: 0;
+            transition: .25s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $white;
+            font-size: 40px;
+        }
 
         .white{
             width: 170px;
             height: 170px;
             background: theme-color(white);
+            transition: .25s;
 
             .image{
                 width: 140px;
@@ -122,6 +151,7 @@
                 background-size: cover;
                 background-size: 160%;
                 background-position: center;
+                transition: .5s;
             }
         }
     }
@@ -136,17 +166,22 @@
     }
 
     .info{
+        flex: 1;
+        padding-left: $grid-gutter;
         display: flex;
         flex-direction: column;
 
         .header{
-            color: theme-color(darkgrey);
+            font-size: .8em;
+            padding-bottom: 10px;
         }
 
         .title{
             flex: 1;
-            display: flex;
-            align-items: center;
+
+            a{
+                text-decoration: none;
+            }
         }
 
         .footer{
@@ -162,10 +197,25 @@
 
 // Episodes page
 #archive{
+    #tags{
+        .button{
+            font-size: .8em;
+            color: theme-color(black);
+            background-color: theme-color(beige);
+            border: 1px solid theme-color(darkgrey);
+            padding: 5px 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
     .episodes{
         .episode{
-            .row{
-                flex-flow: column;
+            flex-flow: column;
+            
+            .info{
+                padding-top: $grid-gutter / 2;
+                padding-left: 0;
             }
         }
     }
