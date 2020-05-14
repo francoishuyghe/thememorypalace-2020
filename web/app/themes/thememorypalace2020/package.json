@@ -78,6 +78,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "bootstrap": "v4.3.1",
+    "isotope-layout": "^3.0.6",
     "jquery": "^3.3.1",
     "js-yaml": "^3.13.1",
     "lodash.template": "^4.5.0",

@@ -14,17 +14,23 @@
                 );
             $parent_tags = get_tags($args);
         @endphp
+
+        <div class="header">
+            <a class="favorites">Favorites</a>
+            @foreach ($parent_tags as $parent_tag)
+                <a class="tag-title" data-tags="{{ $parent_tag->slug }}">{{ $parent_tag->name }} <i class="fas fa-sort-down"></i><i class="fas fa-sort-up"></i></a>
+            @endforeach
+        </div>
         @foreach ($parent_tags as $parent_tag)
             {{-- If they have children, display them --}}
             @php
             $children_tags = get_tags(array( 'child_of' => $parent_tag->term_id ));
             @endphp
             @if($children_tags)
-            <div class="tag-cat">
-                <h3>{{ $parent_tag->name }}</h3>
+            <div class="tag-cat" data-tags="{{ $parent_tag->slug }}">
                 @foreach ($children_tags as $tag)
                     @if($tag->count > 1)
-                        <a class="button" data-slug="{{$tag->slug}}">{{ $tag->name }}</a>
+                        <button data-filter=".{{$tag->slug}}">{{ $tag->name }}</a>
                     @endif
                 @endforeach
             </div>
@@ -32,12 +38,9 @@
         @endforeach
     </div>
     <div class="episodes">
-        <div class="row">
+        <div class="gutter-sizer"></div>
         @foreach ($episodes as $episode)
-            <div class="col-md-4">
-                @include('partials.episode-block')
-            </div>
+            @include('partials.episode-block')
         @endforeach
-        <div class="row">
     </div>
 </section>

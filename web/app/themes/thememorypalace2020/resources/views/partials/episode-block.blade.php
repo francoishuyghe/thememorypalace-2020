@@ -5,9 +5,17 @@ if($audio)
     $audio_file_path = get_attached_file( $audio['ID'] );
     $metadata = wp_read_audio_metadata( $audio_file_path );
 }
+
+$postTags = get_the_tags($episode->ID);
+$tagSlugs = '';
+if($postTags){
+    foreach ($postTags as $tag) {
+        $tagSlugs .= ' ' . $tag->slug;
+    }
+}
 @endphp
 
-<div class="episode episode-{{ $episode->ID }}">
+<div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }}">
         <div class="thumbnail" style="background: {{ the_field('color', $episode->ID ) }}">
             <div class="white">
                 <div class="image" style="background-image: url({{ get_the_post_thumbnail_url($episode->ID, 'medium') }});"></div>
