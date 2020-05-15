@@ -38,9 +38,29 @@ export default {
     }, 500);
 
     // filter items on button click
-    $('.tag-cat').on( 'click', 'button', function() {
-      var filterValue = $(this).attr('data-filter');
-      $grid.isotope({ filter: filterValue });
+    let $reset = $('.reset');
+    let $buttons = $('.tag-cat button');
+
+    $reset.click(function () { 
+      $buttons.removeClass('active');
+      $reset.removeClass('active');
+      $grid.isotope({ filter: '*' })
+    });
+
+    $('.tag-cat').on('click', 'button', function () {
+      if ($(this).hasClass('active')) {
+        $buttons.removeClass('active');
+        $reset.removeClass('active');
+
+        $grid.isotope({ filter: '*' })
+      } else { 
+        $buttons.removeClass('active');
+        $(this).addClass('active');
+        $reset.addClass('active');
+
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+      }
     });
   },
 };

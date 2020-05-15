@@ -20,6 +20,7 @@
             @foreach ($parent_tags as $parent_tag)
                 <a class="tag-title" data-tags="{{ $parent_tag->slug }}">{{ $parent_tag->name }} <i class="fas fa-sort-down"></i><i class="fas fa-sort-up"></i></a>
             @endforeach
+            <a class="reset">RESET</a>
         </div>
         @foreach ($parent_tags as $parent_tag)
             {{-- If they have children, display them --}}

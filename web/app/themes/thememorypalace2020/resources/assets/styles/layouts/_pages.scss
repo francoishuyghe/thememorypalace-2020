@@ -137,6 +137,24 @@
             transform: translate(-50%, -50%);
             color: $white;
             font-size: 40px;
+
+            .fa-pause{
+                display: none;
+            }
+        }
+
+        &.playing{
+            .play{
+                opacity: 1;
+
+                .fa-pause{
+                    display: inline-block;
+                }
+
+                .fa-play{
+                    display: none;
+                }
+            }
         }
 
         .white{
@@ -234,6 +252,17 @@
                     }   
                 }
             }
+
+            .reset{
+                opacity: 0;
+                transition: .25s;
+                cursor: default;
+
+                &.active{
+                    opacity: 1;
+                    cursor: pointer;
+                }
+            }
         }
         
         .tag-cat{
@@ -254,6 +283,10 @@
             padding: 5px 10px;
             margin-left: 10px;
             margin-bottom: 10px;
+
+            &.active{
+                background-color: theme-color(primary);
+            }
         }
     }
 
