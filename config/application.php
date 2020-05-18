@@ -85,6 +85,15 @@ Config::define('LOGGED_IN_SALT', env('LOGGED_IN_SALT'));
 Config::define('NONCE_SALT', env('NONCE_SALT'));
 
 /**
+ * Digital Ocean Space settings
+ */
+define( 'AS3CF_SETTINGS', serialize( array(
+    'provider' => 'do',
+    'access-key-id' => env('AS3CF_ID'),
+    'secret-access-key' => env('AS3CF_KEY'),
+) ) );
+
+/**
  * Custom Settings
  */
 Config::define('AUTOMATIC_UPDATER_DISABLED', true);
