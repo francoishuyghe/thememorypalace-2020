@@ -1,8 +1,7 @@
 <div id="podcastPlayer">
   <div class="container">
     <div class="title"></div>
-    <div class="row">
-      <div class="col-3 playback">
+      <div class="playback">
         <a class="minus15"><i class="fal fa-undo"></i></a>
         <a class="play">
           <i class="fas fa-pause"></i>
@@ -10,7 +9,7 @@
         </a>
         <a class="plus15"><i class="fal fa-redo"></i></a>
       </div>
-      <div class="col-6 status">
+      <div class="status">
         <div class="timing">
           <span class="current-time"></span>/<span class="full-time"></span>
         </div>
@@ -18,11 +17,18 @@
           <progress id="seek-obj" value="0" max="1"></progress>
         </div>
       </div>
-      <div class="col-3 extra">
+      <div class="extra">
         <a class="download" target="_blank" href=""><i class="fal fa-arrow-to-bottom"></i></a>
-        <a class="volume">volume</a>
+        <div class="volume-wrap">
+          <div class="volume-button">
+            <i class="fas fa-volume"></i>
+            <i class="fas fa-volume-off"></i>
+          </div>
+          <div class="volume-slider">
+            <input type="range" id="volume" name="volume" min="0" max="100">
+          </div>
+        </div>
       </div>
-    </div>
   </div>
   <audio controls ontimeupdate="initProgressBar()">
     <source src="" type="audio/mpeg" id="playerSource">

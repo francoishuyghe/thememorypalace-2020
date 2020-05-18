@@ -55,40 +55,87 @@ img{
     width: 100%;
     bottom: 0;
     left: 0;
+    z-index: 99;
     color: theme-color(white);
     background-color: theme-color(primary);
     padding: $grid-gutter / 2;
+    transform: translateY(100%);
+    transition: .5s;
 
+    &.active{
+        transform: translateY(0);
+    }
+
+    
     .fa-pause{
         display: none;
     }
-
+    
     &[data-status="play"]{
         .fa-play{
             display: none;
         }
-
+        
         .fa-pause{
             display: inline-block;
         }
     }
-
-
+    
+    
     a{
         cursor: pointer;
         transition: .25s;
-
+        text-decoration: none;
+        
         &:hover{
             opacity: .8;
+            color: theme-color(white);
+        }
+    }
+
+    .container{
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .title{
+        padding-bottom: 10px;
+        flex: 1 100%;
+    }
+    
+    .playback{
+        margin-right: $grid-gutter;
+
+        a{
+            margin-right: $grid-gutter / 2;
+        }
+    }
+
+    .status{
+        flex: 1;
+        margin-right: $grid-gutter;
+        display: flex;
+        justify-content: center;
+
+        .timing{
+            width: 100px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .playbar{
+            flex: 1;
         }
     }
 
     progress{
         -webkit-appearance: none;
         appearance: none;
+        cursor: pointer;
 
         width: 100%;
         height: 20px;
+        padding: 9px 0;
         background-color: transparent;
         
         &::-webkit-progress-bar {
@@ -113,6 +160,54 @@ img{
             }
         }
 
+    }
+
+    .volume-wrap{
+        position: relative;
+        display: inline-block;
+
+        &:hover{
+            .volume-slider{
+                display: block;
+            }
+        }
+
+        &.muted{
+            .volume-button{
+                .fa-volume{
+                    display: none;
+                }
+
+                .fa-volume-off{
+                    display: inline-block;
+                }
+            }
+        }
+
+        .volume-button{
+            width: 45px;
+            text-align: center;
+            cursor: pointer;
+
+            .fa-volume-off{
+                display: none;
+            }
+        }
+
+        .volume-slider{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            transform: rotate(-90deg) translate(80px, -35px);
+            background-color: theme-color(primary);
+            
+            input{
+                width: 100px;
+                height: 10px;
+            }
+        }
     }
 
     audio{

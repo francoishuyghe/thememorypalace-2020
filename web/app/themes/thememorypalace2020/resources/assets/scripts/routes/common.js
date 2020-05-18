@@ -6,6 +6,7 @@ export default {
     // JavaScript to be fired on all pages, after page specific JS is fired
 
     let player = $('#podcastPlayer audio')[0];
+    let volumeControl = $('#volume');
 
     function initProgressBar() {
       var length = player.duration || 0;
@@ -20,7 +21,6 @@ export default {
       $('.current-time').html(currentTime);
 
       var progressbar = $('#seek-obj');
-      console.log(length);
       progressbar.val(current_time / length);
       progressbar.on('click', seek);
 
@@ -33,6 +33,38 @@ export default {
         player.currentTime = percent * player.duration;
         progressbar.value = percent / 100;
       }
+    }
+
+    function initVolume() {
+
+      volumeControl.val(100);
+
+      // Volume Slider Control
+      volumeControl.change(function () { 
+        let newVolume = $(this).val() / 100;
+        player.volume = newVolume;
+
+        if (newVolume == 0) { 
+          $('.volume-wrap').addClass('muted');
+        } else { 
+          $('.volume-wrap').removeClass('muted');
+        }
+      });
+
+      // Mute/Unmute
+      $('.volume-button').click(function () { 
+        if (player.volume == 0) {
+          //unmute and turn volume to 100
+          volumeControl.val(100);
+          player.volume = 1;
+          $('.volume-wrap').removeClass('muted');
+        } else { 
+          //mute
+          volumeControl.val(0);
+          player.volume = 0;
+          $('.volume-wrap').addClass('muted');
+        }
+      });
     }
 
     $('.episode').on('click', '.thumbnail', function () {
@@ -57,7 +89,9 @@ export default {
         player.load();
         console.log(player)
         player.ontimeupdate = initProgressBar;
+        initVolume();
         player.play();
+        $('#podcastPlayer').addClass('active');
       }
     })
 
