@@ -1,56 +1,15 @@
-@php function colourBrightness($hex, $percent)
-{
-    // Work out if hash given
-    $hash = '';
-    if (stristr($hex, '#')) {
-        $hex = str_replace('#', '', $hex);
-        $hash = '#';
-    }
-    /// HEX TO RGB
-    $rgb = [hexdec(substr($hex, 0, 2)), hexdec(substr($hex, 2, 2)), hexdec(substr($hex, 4, 2))];
-    //// CALCULATE
-    for ($i = 0; $i < 3; $i++) {
-        // See if brighter or darker
-        if ($percent > 0) {
-            // Lighter
-            $rgb[$i] = round($rgb[$i] * $percent) + round(255 * (1 - $percent));
-        } else {
-            // Darker
-            $positivePercent = $percent - ($percent * 2);
-            $rgb[$i] = round($rgb[$i] * (1 - $positivePercent)); // round($rgb[$i] * (1-$positivePercent));
-        }
-        // In case rounding up causes us to go to 256
-        if ($rgb[$i] > 255) {
-            $rgb[$i] = 255;
-        }
-    }
-    //// RBG to Hex
-    $hex = '';
-    for ($i = 0; $i < 3; $i++) {
-        // Convert the decimal digit to hex
-        $hexDigit = dechex($rgb[$i]);
-        // Add a leading zero if necessary
-        if (strlen($hexDigit) == 1) {
-            $hexDigit = "0" . $hexDigit;
-        }
-        // Append to the hex string
-        $hex .= $hexDigit;
-    }
-    return $hash . $hex;
-}
-@endphp
-
+@include('partials.color-brightness')
 
 <section id="top">
     @php $color = get_field('color', $latest_episode[0]->ID) @endphp
     <div id="intro" style="background-color: {{$color}}">
-            {{ the_content() }}
+        {{ the_content() }}
+        <a class="button shuffle">Play a Random Episode</a>
     </div>
 <div id="latestEpisode" style="background-color: {{ colourBrightness($color, 0.5) }}">
         @php $episode = $latest_episode[0] @endphp
         @include('partials.episode-block')
     </div>
-    <div class="shuffle"><i class="fal fa-random"></i></div>
 </section>
 
 <section id="episodes">

@@ -19,10 +19,9 @@ if($postTags){
 
 <div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }}">
     <div class="thumbnail" 
-    @if($metadata)
     data-audio="{{ $audio['url'] }}"
     data-title="EPISODE {{ get_field('episode_number', $episode->ID) }}: {{ $episode->post_title }}"
-    @endif
+    data-id="{{ $episode->ID }}"
     style="background: {{ the_field('color', $episode->ID ) }}">
             <div class="white">
                 <div class="image" style="background-image: url({{ get_the_post_thumbnail_url($episode->ID, 'medium') }});"></div>

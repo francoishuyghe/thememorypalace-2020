@@ -1,10 +1,46 @@
+import barba from '@barba/core';
+import gsap from 'gsap';
+
 export default {
   init() {
     // JavaScript to be fired on all pages
+    barba.init({
+      transitions: [{
+        name: 'default-transition',
+        leave(data) {
+          return gsap.to(data.current.container, {
+            opacity: 0,
+          });
+        },
+        enter(data) {
+          // create your amazing enter animation here
+          return gsap.from(data.next.container, {
+            opacity: 0,
+          });
+        },
+      }],
+    });
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
 
+
+    //Shuffle buttons
+    $('.shuffle').click(function () {
+      // Get a random episode
+      $.ajax({
+        url: ajax_object.ajax_url,
+        method: 'POST',
+        data: { action: 'get_random_post' },
+      }).done(function (response) {
+        let post = JSON.parse(response);
+        console.log(post)
+        // Start Playing
+        playButton(post.audio, post.title, post.ID);
+      });
+    });
+
+    // Player Settings
     let player = $('#podcastPlayer audio')[0];
     let volumeControl = $('#volume');
 
@@ -24,8 +60,11 @@ export default {
       progressbar.val(current_time / length);
       progressbar.on('click', seek);
 
+      //When the track ends
       if (player.currentTime == player.duration) {
-        //document.getElementById('play-btn').className = '';
+        // Find episode on page and toggle playing
+        let episodeID = $('#podcastPlayer').data('id');
+        $('.thumbnail[data-id="' + episodeID + '"]').toggleClass('playing');
       }
 
       function seek(event) {
@@ -40,25 +79,25 @@ export default {
       volumeControl.val(100);
 
       // Volume Slider Control
-      volumeControl.change(function () { 
+      volumeControl.change(function () {
         let newVolume = $(this).val() / 100;
         player.volume = newVolume;
 
-        if (newVolume == 0) { 
+        if (newVolume == 0) {
           $('.volume-wrap').addClass('muted');
-        } else { 
+        } else {
           $('.volume-wrap').removeClass('muted');
         }
       });
 
       // Mute/Unmute
-      $('.volume-button').click(function () { 
+      $('.volume-button').click(function () {
         if (player.volume == 0) {
           //unmute and turn volume to 100
           volumeControl.val(100);
           player.volume = 1;
           $('.volume-wrap').removeClass('muted');
-        } else { 
+        } else {
           //mute
           volumeControl.val(0);
           player.volume = 0;
@@ -67,36 +106,50 @@ export default {
       });
     }
 
+    // Play
+    function playButton(audio, title, id) {
+      console.log('Info: ', audio, title, id)
+      // Add podcast info
+      $('#podcastPlayer .title').html(title);
+      $('#podcastPlayer').data('id', id);
+      $('#playerSource').attr('src', audio);
+      $('#podcastPlayer .download').attr('href', audio);
+        
+      player.load();
+      player.ontimeupdate = initProgressBar;
+      initVolume();
+      player.play();
+      $('#podcastPlayer').attr('data-status', 'play');
+      $('#podcastPlayer').addClass('active');
+    }
+
+    //Pause
+    function pauseButton() { 
+      //Stop playing
+      $('#podcastPlayer').attr('data-status', 'pause');
+      player.pause();
+    }
+
+    // Click event on an episode block
     $('.episode').on('click', '.thumbnail', function () {
-
       if ($(this).hasClass('playing')) {
-        //Stop playing
+        // Pause playing
         $(this).removeClass('playing');
-        $('#podcastPlayer').attr('data-status', 'pause');
-        player.pause();
-
+        pauseButton();
       } else { 
-        //Start playing
+        // Start playing
+        $('.thumbnail.playing').removeClass('playing');
         $(this).addClass('playing');
-        $('#podcastPlayer').attr('data-status', 'play');
-        
-        // Add podcast info
-        $('#playerSource').attr('src', $(this).data('audio'));
-        $('#podcastPlayer .title').html($(this).data('title'));
-        $('#podcastPlayer .full-time').html($(this).data('length-formatted'));
-        $('#podcastPlayer .download').attr('href', $(this).data('audio'));
-        
-        player.load();
-        console.log(player)
-        player.ontimeupdate = initProgressBar;
-        initVolume();
-        player.play();
-        $('#podcastPlayer').addClass('active');
+        playButton($(this).data('audio'), $(this).data('title'), $(this).data('id'));
       }
     })
 
     // Player Play/Pause
     $('#podcastPlayer').on('click', '.play', function () {
+      // Find episode on page and toggle playing
+      let episodeID = $('#podcastPlayer').data('id');
+      $('.thumbnail[data-id="' + episodeID + '"]').toggleClass('playing');
+
       if (player.paused) {
         player.play();
         $('#podcastPlayer').attr('data-status', 'play');

@@ -14,6 +14,13 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
     wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
 
+    // Add Ajax URLs
+    $ajax_params = array(
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+        'ajax_nonce' => wp_create_nonce( 'my_nonce' ), 
+      );
+    wp_localize_script( 'sage/main.js', 'ajax_object', $ajax_params);
+
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
@@ -144,3 +151,30 @@ add_action( 'after_setup_theme', function() {
 
   //Allow audio metadat functions
 require_once( ABSPATH . 'wp-admin/includes/media.php' );
+
+
+// Random episode fetch
+
+function get_random_post() {
+    // Query Arguments
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'orderby' => 'rand',
+        'post_per_page' => 1
+    );
+
+    // The Query
+    $ajaxposts = get_posts( $args );
+    $episode = (object)[
+        'title' => $ajaxposts[0]->post_title,
+        'audio' => get_field('audio', $ajaxposts[0]->ID), //TODO check this works
+        'ID' => $ajaxposts[0]->ID,
+    ];
+    echo json_encode( $episode );
+    exit;
+}
+
+// Fire AJAX action for both logged in and non-logged in users
+add_action('wp_ajax_get_random_post',  __NAMESPACE__ . '\\get_random_post');
+add_action('wp_ajax_nopriv_get_random_post',  __NAMESPACE__ . '\\get_random_post');
