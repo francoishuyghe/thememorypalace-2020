@@ -4,6 +4,9 @@ import gsap from 'gsap';
 export default {
   init() {
     // JavaScript to be fired on all pages
+    var bodyClasses;
+
+    console.log('Barba init');
     barba.init({
       transitions: [{
         name: 'default-transition',
@@ -13,7 +16,12 @@ export default {
           });
         },
         enter(data) {
-          // create your amazing enter animation here
+          //Get new body classes
+          let response = data.next.html.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', data.next.html);
+          bodyClasses = $(response).filter('notbody').attr('class');
+          $('body').attr('class', bodyClasses);
+
+          //Animate it in
           return gsap.from(data.next.container, {
             opacity: 0,
           });
