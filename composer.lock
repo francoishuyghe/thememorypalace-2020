@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56eadfbaeb294fc088fab3c31de21021",
+    "content-hash": "eac675beedd6774c8ebb62c41e305765",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -690,6 +690,24 @@
                 }
             ],
             "time": "2020-05-02T13:46:13+00:00"
+        },
+        {
+            "name": "wpackagist-plugin/add-from-server",
+            "version": "3.3.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/add-from-server/",
+                "reference": "tags/3.3.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/add-from-server.3.3.3.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/add-from-server/"
         },
         {
             "name": "wpackagist-plugin/advanced-custom-fields",
