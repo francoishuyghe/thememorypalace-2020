@@ -10,6 +10,6 @@
     if(!$postColor){
       $postColor = App::themeColor();
     }
-  @endphp
-  <a class="subscribe" target="_blank" href="https://podcasts.apple.com/podcast/the-memory-palace/id299436963" style="background-color: {{ $postColor }}">Subscribe</a>
+  @endphp 
+  <a class="subscribe {{ $postColor }}" target="_blank" href="https://podcasts.apple.com/podcast/the-memory-palace/id299436963">Subscribe</a>
 </header>

@@ -4,7 +4,7 @@
   <body @php body_class() @endphp data-barba="wrapper">
     @php do_action('get_header') @endphp
     @include('partials.header')
-    <div class="content-wrap" role="document" data-barba="container">
+    <div class="content-wrap" role="document" data-barba="container" data-barba-namespace="{{ $post->post_name }}">
       <div class="content">
         <main class="main">
           @yield('content')

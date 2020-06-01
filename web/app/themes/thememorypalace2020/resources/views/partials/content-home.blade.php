@@ -2,11 +2,11 @@
 
 <section id="top">
     @php $color = get_field('color', $latest_episode[0]->ID) @endphp
-    <div id="intro" style="background-color: {{$color}}">
+    <div id="intro" class="{{$color}}">
         {{ the_content() }}
         <a class="button shuffle">Play a Random Episode</a>
     </div>
-<div id="latestEpisode" style="background-color: {{ colourBrightness($color, 0.5) }}">
+<div id="latestEpisode">
         @php $episode = $latest_episode[0] @endphp
         @include('partials.episode-block')
     </div>

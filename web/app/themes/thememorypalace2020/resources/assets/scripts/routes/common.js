@@ -8,14 +8,25 @@ export default {
 
     console.log('Barba init');
     barba.init({
+      views: [{
+        namespace: 'episodes',
+        before() {
+          console.log('before episodes');
+        },
+        enter() {
+          console.log('entering episodes');
+        },
+      }],
       transitions: [{
         name: 'default-transition',
         leave(data) {
+          console.log('leaving');
           return gsap.to(data.current.container, {
             opacity: 0,
           });
         },
         enter(data) {
+          console.log('entering');
           //Get new body classes
           let response = data.next.html.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', data.next.html);
           bodyClasses = $(response).filter('notbody').attr('class');

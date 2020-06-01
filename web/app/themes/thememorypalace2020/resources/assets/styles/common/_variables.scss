@@ -6,9 +6,17 @@ $theme-colors: (
   black: hsl(0, 0%, 7%),
   white: #EDEBE6,
   grey: #F5F5F5,
-  darkgrey: #9B9B9B,
+  darkgrey: #837D7F,
   beige: #DCD9D3,
-  darkbeige:#BFBAAC,
+  darkbeige:#AB967B,
+  purple:#8A477C,
+  red: #B03F61,
+  orange: #BA5A3B,
+  green: #48891B,
+  teal: #91BDB2,
+  blue: #2B74B8,
+  darkblue: #47538E,
+  violet: #8567C1,
 );
 
 $grid-gutter: 50px;
@@ -16,6 +24,36 @@ $grid-gutter: 50px;
 /** Bootstrap navbar fix (https://git.io/fADqW) */
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
+
+.colored{
+  &.darkblue{
+    background: theme-color(darkblue);
+  }
+  &.blue{
+      background: theme-color(blue);
+  }
+  &.darkgrey{
+      background: theme-color(darkgrey);
+  }
+  &.green{
+      background: theme-color(green);
+  }
+  &.darkbeige{
+      background: theme-color(darkbeige);
+  }
+  &.red{
+      background: theme-color(red);
+  }
+  &.purple{
+      background: theme-color(purple);
+  }
+  &.violet{
+      background: theme-color(violet);
+  }
+  &.orange{
+      background: theme-color(orange);
+  }
+}
 
 // Fonts
 @font-face {

@@ -5,7 +5,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 leftbar">
-          <h3> {{ $data['intro'] }}</h3>
+          <div class="intro">
+            {!! $data['intro'] !!}
+          </div>
+          @if($data['links'])
           <div class="links">
             <ul>
             @foreach ($data['links'] as $link)
@@ -15,8 +18,9 @@
                 </a>
               </li>
             @endforeach
-            </ul>
-          </div>
+          </ul>
+        </div>
+        @endif
         </div>
         <div class="col-md-6">
           @php the_content() @endphp

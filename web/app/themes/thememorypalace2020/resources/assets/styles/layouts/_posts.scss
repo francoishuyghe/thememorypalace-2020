@@ -4,12 +4,12 @@
     }
 
     #top{
+        @extend .colored;
         background-color: theme-color(primary);
         color: theme-color(white);
         height: 100vh;
         display: flex;
         flex-direction: row;
-    
         
         #episode,
         #content{
@@ -22,7 +22,7 @@
         }
 
         #episode{
-            background-color: lighten(theme-color(primary), 5);
+            background-color: rgba(theme-color(white), .2);
 
             .episode{
                 background-color: transparent;

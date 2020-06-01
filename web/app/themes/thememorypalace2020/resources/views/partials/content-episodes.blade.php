@@ -10,7 +10,7 @@
             $args = array(
                 'orderby' => 'name',
                 'order' => 'ASC',
-                'include' => [1322, 1320, 1321]
+                'include' => [1359, 1360, 1361]
                 );
             $parent_tags = get_tags($args);
         @endphp
@@ -30,7 +30,7 @@
             @if($children_tags)
             <div class="tag-cat" data-tags="{{ $parent_tag->slug }}">
                 @foreach ($children_tags as $tag)
-                    @if($tag->count > 1)
+                    @if($tag->count > 2)
                         <button data-filter=".{{$tag->slug}}">{{ $tag->name }}</a>
                     @endif
                 @endforeach

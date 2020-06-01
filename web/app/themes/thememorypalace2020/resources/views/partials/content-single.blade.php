@@ -1,8 +1,7 @@
 @include('partials.color-brightness')
 
-<section id="top">
-  @php $color = get_field('color') @endphp
-  <div id="content" style="background-color: {{$color}}">
+<section id="top" class="{{ the_field('color') }}">
+  <div id="content">
       <article {!! post_class() !!}>
         <div class="entry-content">
           @php the_content() @endphp
@@ -12,7 +11,7 @@
         </footer>
     </article>
   </div>
-  <div id="episode" style="background-color: {{ colourBrightness($color, 0.5) }}">
+  <div id="episode">
     @php $episode = $post @endphp
     @include('partials.episode-block')
   </div>

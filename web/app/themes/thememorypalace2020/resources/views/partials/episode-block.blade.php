@@ -18,11 +18,11 @@ if($postTags){
 @endphp
 
 <div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }}">
-    <div class="thumbnail" 
+    <div class="thumbnail-wrap">
+    <div class="thumbnail {{ the_field('color', $episode->ID ) }}" 
     data-audio="{{ $audio['url'] }}"
     data-title="EPISODE {{ get_field('episode_number', $episode->ID) }}: {{ $episode->post_title }}"
-    data-id="{{ $episode->ID }}"
-    style="background: {{ the_field('color', $episode->ID ) }}">
+    data-id="{{ $episode->ID }}">
             <div class="white">
                 <div class="image" style="background-image: url({{ get_the_post_thumbnail_url($episode->ID, 'medium') }});"></div>
             </div>
@@ -30,6 +30,7 @@ if($postTags){
                 <i class="fas fa-play"></i>
                 <i class="fas fa-pause"></i>
             </div>
+        </div>
         </div>
         <div class="info">
             <div class="header">

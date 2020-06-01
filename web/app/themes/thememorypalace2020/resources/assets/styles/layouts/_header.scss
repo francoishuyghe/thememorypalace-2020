@@ -5,6 +5,7 @@
   z-index: 999;
   background-color: theme-color(primary);
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   padding: 10px $grid-gutter / 2;
   justify-content: space-between;
@@ -16,9 +17,20 @@
 
   .brand{
     font-family: MillerDisplay, serif;
-    font-size: 50px;
+    font-size: 30px;
+    text-align: center;
     text-transform: lowercase;
     font-weight: 600;
+    order: 1;
+    flex: 1 100%;
+    margin-bottom: 10px;
+
+    @include media-breakpoint-up(md){
+      flex: 1;
+      order: 2;
+      font-size: 50px;
+      margin-bottom: 0;
+    }
   }
 
   a{
@@ -29,6 +41,11 @@
   }
 
   .nav-primary{
+    order: 2;
+
+    @include media-breakpoint-up(md){
+      order: 1;
+    }
 
     ul{
       justify-content: flex-end;
@@ -50,8 +67,14 @@
   }
 
   .subscribe{
+    @extend .colored;
     display: inline-block;
-    padding: .5em 1em;
+    padding: 5px 15px;
     border-radius: 2em;
+    order: 3;
+
+    @include media-breakpoint-up(md){
+      padding: .5em 1em;
+    }
   }
 }
