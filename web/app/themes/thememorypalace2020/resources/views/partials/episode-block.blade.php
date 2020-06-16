@@ -17,12 +17,12 @@ if($postTags){
 }
 @endphp
 
-<div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }}">
-    <div class="thumbnail-wrap">
-    <div class="thumbnail {{ the_field('color', $episode->ID ) }}" 
+<div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }}"
     data-audio="{{ $audio['url'] }}"
     data-title="EPISODE {{ get_field('episode_number', $episode->ID) }}: {{ $episode->post_title }}"
     data-id="{{ $episode->ID }}">
+    <div class="thumbnail-wrap">
+    <div class="thumbnail {{ the_field('color', $episode->ID ) }}">
             <div class="white">
                 <div class="image" style="background-image: url({{ get_the_post_thumbnail_url($episode->ID, 'medium') }});"></div>
             </div>
@@ -33,6 +33,12 @@ if($postTags){
         </div>
         </div>
         <div class="info">
+            <div class="play-wrap">
+                <div class="play">
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-pause"></i>
+                </div>
+            </div>
             <div class="header">
                 {{ get_the_date('', $episode->ID) }} @if($audio) | {{ $metadata['length_formatted'] }}@endif
             </div>

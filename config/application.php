@@ -87,7 +87,7 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
 /**
  * Digital Ocean Space settings
  */
-define( 'AS3CF_SETTINGS', serialize( array(
+Config::define( 'AS3CF_SETTINGS', serialize( array(
     'provider' => 'do',
     'access-key-id' => env('AS3CF_ID'),
     'secret-access-key' => env('AS3CF_KEY'),
@@ -125,6 +125,7 @@ if (file_exists($env_config)) {
 }
 
 Config::apply();
+
 
 /**
  * Bootstrap WordPress

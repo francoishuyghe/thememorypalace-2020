@@ -150,24 +150,25 @@ export default {
     }
 
     // Click event on an episode block
-    $('.episode').on('click', '.thumbnail', function () {
-      if ($(this).hasClass('playing')) {
+    $('.episode .play').click(function () {
+      let episode = $(this).parents('.episode');
+      if (episode.hasClass('playing')) {
         // Pause playing
-        $(this).removeClass('playing');
+        episode.removeClass('playing');
         pauseButton();
       } else { 
         // Start playing
-        $('.thumbnail.playing').removeClass('playing');
-        $(this).addClass('playing');
-        playButton($(this).data('audio'), $(this).data('title'), $(this).data('id'));
+        $('.episode.playing').removeClass('playing');
+        episode.addClass('playing');
+        playButton(episode.data('audio'), episode.data('title'), episode.data('id'));
       }
     })
 
-    // Player Play/Pause
-    $('#podcastPlayer').on('click', '.play', function () {
+    // Player Play/Pause 
+    $('#podcastPlayer .play').click(function () {
       // Find episode on page and toggle playing
       let episodeID = $('#podcastPlayer').data('id');
-      $('.thumbnail[data-id="' + episodeID + '"]').toggleClass('playing');
+      $('.episode[data-id="' + episodeID + '"]').toggleClass('playing');
 
       if (player.paused) {
         player.play();

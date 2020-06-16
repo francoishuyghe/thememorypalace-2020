@@ -1,0 +1,211 @@
+// EPISODE BLOCKS
+
+.episode{
+    padding: $grid-gutter / 2;
+    margin-bottom: $grid-gutter / 2;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    display: flex;
+
+    .thumbnail-wrap{
+        min-width: 100px;
+    }
+
+    .fa-pause{
+        display: none;
+    }
+
+    .thumbnail{
+        @extend .colored;
+        position: relative;
+        margin: auto;
+        width: 100%;
+        height: 0;
+        padding-top: 100%;
+        background: theme-color(primary);
+        cursor: pointer;
+
+        &:hover{
+            .play{
+                opacity: 1;
+            }
+
+            .white{
+                //transform: translate(-50%, -50%) scale(1.05) ;
+
+                .image{
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        .play{
+            opacity: 0;
+            transition: .25s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $white;
+            font-size: 40px;
+        }
+
+        .white{
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: theme-color(white);
+            transition: .25s;
+
+            .image{
+                width: 80%;
+                height: 80%;
+                background-size: cover;
+                background-size: 160%;
+                background-position: center;
+                transition: .5s;
+            }
+        }
+    }
+
+    .thumbnail,
+    .white,
+    .image{
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: $grid-gutter / 2;
+
+        @include media-breakpoint-up(md){
+            padding-left: $grid-gutter;
+        }
+
+        .play-wrap{
+            display: none;
+        }
+
+        .header{
+            font-size: .8em;
+            padding-bottom: 10px;
+        }
+
+        .title{
+            flex: 1;
+
+            a{
+                text-decoration: none;
+            }
+        }
+
+        .footer{
+            display: flex;
+            justify-content: space-between;
+
+            .info{
+                color: theme-color(darkgrey);
+            }
+        }
+    }
+
+    // PLAYING
+    &.playing{
+        .play{
+            opacity: 1;
+            background-image: url('../images/audiowaves.gif');
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .fa-pause{
+                display: inline-block;
+            }
+
+            .fa-play{
+                display: none;
+            }
+        }
+    }
+}
+
+.featured .episode{
+    flex-direction: column;
+    background-color: transparent;
+    box-shadow: 0 0;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: center;
+
+    .info{
+        padding-left: 0;
+        padding-bottom: 20px;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+
+        .title{
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .play-wrap{
+            display: block;
+            width: 70px;
+
+            .play{
+                position: relative;
+                background: theme-color(primary);
+                width: 100%;
+                height: 0;
+                padding-top: 100%;
+                border-radius: 100%;
+                cursor: pointer;
+
+                i{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        h5{
+            color: theme-color(primary);
+            margin-bottom: 5px;
+        }
+
+        h4{
+            color: theme-color(primary);
+            font-size: 2em;
+        }
+
+        .header{
+            display: none;
+        }
+    }
+
+    .thumbnail-wrap{
+        width: 200px;
+    }
+
+    @include media-breakpoint-up(md){
+        flex-direction: column-reverse;
+        text-align: left;
+
+        .thumbnail-wrap{
+            width: 250px;
+        }
+    }
+}

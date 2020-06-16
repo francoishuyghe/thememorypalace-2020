@@ -1,12 +1,14 @@
 @include('partials.color-brightness')
 
-<section id="top">
-    @php $color = get_field('color', $latest_episode[0]->ID) @endphp
-    <div id="intro" class="{{$color}}">
-        {{ the_content() }}
-        <a class="button shuffle">Play a Random Episode</a>
+@php $color = get_field('color', $latest_episode[0]->ID) @endphp
+<section id="top" class="{{$color}}">
+    <div id="intro">
+        <div class="intro-wrap">
+            {{ the_content() }}
+            <a class="button shuffle">Play a Random Episode</a>
+        </div>
     </div>
-<div id="latestEpisode">
+<div id="latestEpisode" class="featured">
         @php $episode = $latest_episode[0] @endphp
         @include('partials.episode-block')
     </div>
