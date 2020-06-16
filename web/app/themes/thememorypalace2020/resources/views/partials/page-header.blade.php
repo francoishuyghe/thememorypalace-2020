@@ -1,3 +1,3 @@
-<div class="page-header">
+<section class="page-header">
   <h1>{!! App::title() !!}</h1>
-</div>
+</section>

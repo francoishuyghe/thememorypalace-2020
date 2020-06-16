@@ -1,6 +1,13 @@
 //All Pages
 .page{
-    #top{
+    .content{
+        padding: $grid-gutter 0;
+            width: 100%;
+    }
+
+    main section:first-child{
+        padding-top: 50px;
+
         @include media-breakpoint-up(md){
             padding-top: 95px;
         }
@@ -10,7 +17,7 @@
 
 // HOME
 .page.home{
-    .content-wrap{
+    .content{
         padding-top: 0;
     }
 
@@ -236,6 +243,11 @@
             .episode{
                 width: 30%;
                 flex-flow: column;
+
+                .thumbnail-wrap{
+                    margin: auto;
+                    width: 170px;
+                }
                 
                 .info{
                     padding-top: $grid-gutter / 2;
