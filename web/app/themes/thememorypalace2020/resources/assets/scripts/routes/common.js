@@ -1,6 +1,6 @@
 import barba from '@barba/core';
 import gsap from 'gsap';
-import episodes from './episodes-functions';
+import episodes from './episodes';
 
 export default {
   init() {
@@ -16,8 +16,8 @@ export default {
         },
         enter() {
           console.log('entering episodes');
-          episodes.tagsSetup();
-          episodes.isotopeSetup();
+          episodes.init();
+          episodes.finalize();
         },
       }],
       transitions: [{
@@ -30,10 +30,15 @@ export default {
         },
         enter(data) {
           console.log('entering');
+
+          // Scroll bck to top
+          $(window).scrollTop(0);
+
           //Get new body classes
           let response = data.next.html.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', data.next.html);
           bodyClasses = $(response).filter('notbody').attr('class');
           $('body').attr('class', bodyClasses);
+          $('body').css('height', 'auto');
 
           //Animate it in
           return gsap.from(data.next.container, {
@@ -58,7 +63,7 @@ export default {
         let post = JSON.parse(response);
         console.log(post)
         // Start Playing
-        playButton(post.audio, post.title, post.ID);
+        playButton(post.audio.url, post.title, post.ID);
       });
     });
 

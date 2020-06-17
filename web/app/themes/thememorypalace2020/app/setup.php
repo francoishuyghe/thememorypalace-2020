@@ -160,6 +160,7 @@ function get_random_post() {
     $args = array(
         'post_type' => 'post',
         'post_status' => 'publish',
+        'category_name' => 'episodes',
         'orderby' => 'rand',
         'post_per_page' => 1
     );
@@ -168,7 +169,7 @@ function get_random_post() {
     $ajaxposts = get_posts( $args );
     $episode = (object)[
         'title' => $ajaxposts[0]->post_title,
-        'audio' => get_field('audio', $ajaxposts[0]->ID), //TODO check this works
+        'audio' => get_field('episode_audio', $ajaxposts[0]->ID), //TODO check this works
         'ID' => $ajaxposts[0]->ID,
     ];
     echo json_encode( $episode );

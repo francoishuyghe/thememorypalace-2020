@@ -8,6 +8,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .content{
+        width: 100%;
+    }
 }
 
 h2{
