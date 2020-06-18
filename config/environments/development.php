@@ -14,5 +14,5 @@ Config::define('SCRIPT_DEBUG', true);
 
 ini_set('display_errors', '1');
 
-// Enable plugin and theme updates and installation from the admin
-Config::define('DISALLOW_FILE_MODS', false);
+// Disable plugin and theme updates and installation from the admin
+Config::define('DISALLOW_FILE_MODS', true);
