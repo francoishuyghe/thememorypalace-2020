@@ -88,7 +88,7 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
  * Digital Ocean Space settings
  */
 Config::define( 'AS3CF_SETTINGS', serialize( array(
-    'provider' => 'do',
+    'provider' => 'aws',
     'access-key-id' => env('AS3CF_ID'),
     'secret-access-key' => env('AS3CF_KEY'),
 ) ) );
