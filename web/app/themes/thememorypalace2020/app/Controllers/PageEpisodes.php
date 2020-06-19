@@ -12,7 +12,7 @@ class PageEpisodes extends Controller
 	    $args = array(
 	    	'post_type' => 'post',
 	    	//'orderby'	=> 'rand',
-			'posts_per_page' => -1,
+			'posts_per_page' => 18,
 			'category_name' => 'episodes',
 			'post_status' => 'publish'
 	    );

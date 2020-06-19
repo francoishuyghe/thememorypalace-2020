@@ -1,6 +1,8 @@
 footer.content-info{
     padding: $grid-gutter / 2 0;
     text-align: center;
+    transition: .25s;
+    background-color: theme-color(beige);
 
     @include media-breakpoint-up(md){
         padding: $grid-gutter 0;

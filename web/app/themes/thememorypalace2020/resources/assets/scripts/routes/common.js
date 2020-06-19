@@ -61,7 +61,6 @@ export default {
         data: { action: 'get_random_post' },
       }).done(function (response) {
         let post = JSON.parse(response);
-        console.log(post)
         // Start Playing
         playButton(post.audio.url, post.title, post.ID);
       });
@@ -147,7 +146,7 @@ export default {
       initVolume();
       player.play();
       $('#podcastPlayer').attr('data-status', 'play');
-      $('#podcastPlayer').addClass('active');
+      $('body').addClass('player-active');
     }
 
     //Pause
