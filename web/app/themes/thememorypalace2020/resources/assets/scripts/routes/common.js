@@ -5,48 +5,9 @@ import episodes from './episodes';
 export default {
   init() {
     // JavaScript to be fired on all pages
-    var bodyClasses;
-
-    console.log('Barba init');
-    barba.init({
-      views: [{
-        namespace: 'episodes',
-        before() {
-          console.log('before episodes');
-        },
-        enter() {
-          console.log('entering episodes');
-          episodes.init();
-          episodes.finalize();
-        },
-      }],
-      transitions: [{
-        name: 'default-transition',
-        leave(data) {
-          console.log('leaving');
-          return gsap.to(data.current.container, {
-            opacity: 0,
-          });
-        },
-        enter(data) {
-          console.log('entering');
-
-          // Scroll bck to top
-          $(window).scrollTop(0);
-
-          //Get new body classes
-          let response = data.next.html.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', data.next.html);
-          bodyClasses = $(response).filter('notbody').attr('class');
-          $('body').attr('class', bodyClasses);
-          $('body').css('height', 'auto');
-
-          //Animate it in
-          return gsap.from(data.next.container, {
-            opacity: 0,
-          });
-        },
-      }],
-    });
+    if (!$('body').hasClass('logged-in')) { 
+      commonFunctions.barbaInit();
+    }
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
@@ -219,3 +180,50 @@ export default {
 
   },
 };
+
+var commonFunctions = {
+  barbaInit() { 
+    var bodyClasses;
+
+    console.log('Barba init');
+    barba.init({
+      views: [{
+        namespace: 'episodes',
+        before() {
+          console.log('before episodes');
+        },
+        enter() {
+          console.log('entering episodes');
+          episodes.init();
+          episodes.finalize();
+        },
+      }],
+      transitions: [{
+        name: 'default-transition',
+        leave(data) {
+          console.log('leaving');
+          return gsap.to(data.current.container, {
+            opacity: 0,
+          });
+        },
+        enter(data) {
+          console.log('entering');
+
+          // Scroll bck to top
+          $(window).scrollTop(0);
+
+          //Get new body classes
+          let response = data.next.html.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', data.next.html);
+          bodyClasses = $(response).filter('notbody').attr('class');
+          $('body').attr('class', bodyClasses);
+          $('body').css('height', 'auto');
+
+          //Animate it in
+          return gsap.from(data.next.container, {
+            opacity: 0,
+          });
+        },
+      }],
+    });
+  },
+}
