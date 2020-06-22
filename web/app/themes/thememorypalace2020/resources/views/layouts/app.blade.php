@@ -4,7 +4,7 @@
   <body {!! body_class() !!} data-barba="wrapper">
     @php do_action('get_header') @endphp
     @include('partials.header')
-    <div class="content-wrap" id="swup" class="transition-fade" role="document" data-barba="container" data-barba-namespace="{{ $post->post_name }}">
+    <div class="content-wrap transition-fade" id="swup" role="document" data-barba="container" data-barba-namespace="{{ $post->post_name }}">
       <div class="content">
         <main class="main">
           @yield('content')
