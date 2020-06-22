@@ -14,7 +14,7 @@
     </div>
 </section>
 
-<section id="episodes">
+{{-- <section id="episodes">
     <div class="container">
         <h2>Episodes</h2>
         @foreach ($episodes as $episode)
@@ -24,4 +24,4 @@
             <a class="button" href="/episodes">More Episodes</a>
         </div>
     </div>
-</section>
+</section> --}}

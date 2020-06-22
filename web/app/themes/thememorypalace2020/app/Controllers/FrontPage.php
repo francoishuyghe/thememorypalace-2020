@@ -24,7 +24,7 @@ class FrontPage extends Controller
 			'posts_per_page' => 4,
 			'offset' => 1
 	    );
-	    $the_query = new WP_Query( $args );
-	    return $the_query->posts;
+	    //$the_query = new WP_Query( $args );
+	    //return $the_query->posts;
 	}
 }
