@@ -11,9 +11,8 @@ class PageEpisodes extends Controller
     public function episodes() {
 	    $args = array(
 	    	'post_type' => 'post',
-	    	//'orderby'	=> 'rand',
 			'posts_per_page' => 18,
-			'category_name' => 'episodes',
+			'cat' => 249,
 			'post_status' => 'publish'
 	    );
 	    $the_query = new WP_Query( $args );

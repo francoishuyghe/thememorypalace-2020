@@ -9,8 +9,8 @@ class FrontPage extends Controller
 {
 	public function latest_episode() {
 	    $args = array(
-	    	'post_type' => 'post',
-	    	//'orderby'	=> 'rand',
+			'post_type' => 'post',
+			'cat' => 249,
 	    	'posts_per_page' => 1,
 	    );
 	    $the_query = new WP_Query( $args );
@@ -19,12 +19,12 @@ class FrontPage extends Controller
 
     public function episodes() {
 	    $args = array(
-	    	'post_type' => 'post',
-	    	//'orderby'	=> 'rand',
+			'post_type' => 'post',
+			'cat' => 249,
 			'posts_per_page' => 4,
 			'offset' => 1
 	    );
-	    //$the_query = new WP_Query( $args );
-	    //return $the_query->posts;
+	    $the_query = new WP_Query( $args );
+	    return $the_query->posts;
 	}
 }
