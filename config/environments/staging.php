@@ -4,6 +4,10 @@
  */
 
 use Roots\WPConfig\Config;
+Config::define('WP_DEBUG', true);
+Config::define('WP_DEBUG_LOG', true);
+Config::define('WP_DEBUG_DISPLAY', true);
+Config::define('SCRIPT_DEBUG', true);
 
 /**
  * You should try to keep staging as close to production as possible. However,
