@@ -168,8 +168,8 @@ function get_random_post() {
     // The Query
     $ajaxposts = get_posts( $args );
     $episode = (object)[
-        'title' => $ajaxposts[0]->post_title,
-        'audio' => get_field('episode_audio', $ajaxposts[0]->ID), //TODO check this works
+        'title' => 'EPISODE ' . get_field('episode_number', $ajaxposts[0]->ID) . ': ' . $ajaxposts[0]->post_title,
+        'audio' => get_field('episode_audio', $ajaxposts[0]->ID), 
         'ID' => $ajaxposts[0]->ID,
     ];
     echo json_encode( $episode );
@@ -179,3 +179,27 @@ function get_random_post() {
 // Fire AJAX action for both logged in and non-logged in users
 add_action('wp_ajax_get_random_post',  __NAMESPACE__ . '\\get_random_post');
 add_action('wp_ajax_nopriv_get_random_post',  __NAMESPACE__ . '\\get_random_post');
+
+/////////////////////////
+// GET next episode
+/////////////////////////
+function get_next_episode() {
+    $ID = $_POST['ID'];
+    
+    global $post;
+    $post = get_post( $ID );
+    setup_postdata( $post );
+    $next_post = get_previous_post();
+    // Query Arguments
+    $episode = (object)[
+        'title' => 'EPISODE ' . get_field('episode_number', $next_post->ID) . ': ' . $next_post->post_title,
+        'audio' => get_field('episode_audio', $next_post->ID),
+        'ID' => $next_post->ID,
+    ];
+    echo json_encode( $episode );
+    exit;
+}
+
+// Fire AJAX action for both logged in and non-logged in users
+add_action('wp_ajax_get_next_post',  __NAMESPACE__ . '\\get_next_episode');
+add_action('wp_ajax_nopriv_get_next_post',  __NAMESPACE__ . '\\get_next_episode');

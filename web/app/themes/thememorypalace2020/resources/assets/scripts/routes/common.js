@@ -22,27 +22,9 @@ export default {
 
     initCommon();
 
-    //Shuffle buttons
-    $('.shuffle').click(function () {
-      // Get a random episode
-      $.ajax({
-        url: ajax_object.ajax_url,
-        method: 'POST',
-        data: { action: 'get_random_post' },
-      }).done(function (response) {
-        let post = JSON.parse(response);
-        // Start Playing
-        playButton(post.audio.url, post.title, post.ID);
-      });
-    });
-
 
     // Player Play/Pause 
     $('#podcastPlayer .play').click(function () {
-      // Find episode on page and toggle playing
-      let episodeID = $('#podcastPlayer').data('id');
-      $('.episode[data-id="' + episodeID + '"]').toggleClass('playing');
-
       if (player.paused) {
         player.play();
         $('#podcastPlayer').attr('data-status', 'play');
@@ -50,6 +32,8 @@ export default {
         player.pause();
         $('#podcastPlayer').attr('data-status', 'pause');
       }
+
+      checkPlayPause();
     });
 
     // Skip 10 seconds
@@ -64,39 +48,78 @@ export default {
 
   },
 };
+
+//////////////////////////////////
+// INIT COMMON
+//////////////////////////////////
   
 function initCommon() { 
-    // Click event on an episode block
+
+  //Check if the playing episode is on the page
+  checkPlayPause();
+
+  // Click event on an episode block
     $('.episode .play').click(function () {
       let episode = $(this).parents('.episode');
+      console.log('Episode ID#' + episode.attr('data-id'));
+
       if (episode.hasClass('playing')) {
         // Pause playing
-        episode.removeClass('playing');
+        console.log('Pause');
         pauseButton();
+
       } else { 
-        // Start playing
-        $('.episode.playing').removeClass('playing');
-        episode.addClass('playing');
-        playButton(episode.data('audio'), episode.data('title'), episode.data('id'));
+        // If already playing
+        if (episode.attr('data-id') == $('#podcastPlayer').attr('data-id')) {
+          console.log('Play');
+          playButton();
+        } else { 
+          // Start playing
+          console.log('Start');
+          startPlayer(episode.attr('data-audio'), episode.attr('data-title'), episode.attr('data-id'));
+        }
       }
+      checkPlayPause();
     })
+  
+  //Shuffle buttons
+  $('.shuffle').click(function () {
+    // Get a random episode
+    $.ajax({
+      url: ajax_object.ajax_url,
+      method: 'POST',
+      data: { action: 'get_random_post' },
+    }).done(function (response) {
+      let post = JSON.parse(response);
+      // Start Playing
+      startPlayer(post.audio.url, post.title, post.ID);
+    });
+  });
 }
+
+
+//////////////////////////////////
+// INIT PAGES
+//////////////////////////////////
   
 function initPages() {
   console.log('Rerun Init')
   initCommon();
 
-    if (document.querySelector('.page.episodes')) {
-      episodes.init();
-      episodes.finalize();
-    }
+  if (document.querySelector('.page.episodes')) {
+    episodes.init();
+    episodes.finalize();
   }
+}
 
-// Player Settings
+//////////////////////////////////
+// PLAYER FUNCTIONS
+//////////////////////////////////
+
 let player = $('#podcastPlayer audio')[0];
 let volumeControl = $('#volume');
 
-function initProgressBar() {
+var initProgressBar = function() {
   var length = player.duration || 0;
   var current_time = player.currentTime;
 
@@ -115,7 +138,7 @@ function initProgressBar() {
   //When the track ends
   if (player.currentTime == player.duration) {
     // Find episode on page and toggle playing
-    let episodeID = $('#podcastPlayer').data('id');
+    let episodeID = $('#podcastPlayer').attr('data-id');
     $('.thumbnail[data-id="' + episodeID + '"]').toggleClass('playing');
   }
 
@@ -126,7 +149,7 @@ function initProgressBar() {
   }
 }
 
-function initVolume() {
+var initVolume = function() {
 
   volumeControl.val(100);
 
@@ -159,27 +182,84 @@ function initVolume() {
 }
 
 // Play
-function playButton(audio, title, id) {
-  console.log('Info: ', audio, title, id)
+var startPlayer = function (audio, title, ID) {
+  console.log('Info: ', audio, title, ID)
   // Add podcast info
   $('#podcastPlayer .title').html(title);
-  $('#podcastPlayer').data('id', id);
+  $('#podcastPlayer').attr('data-id', ID);
   $('#playerSource').attr('src', audio);
   $('#podcastPlayer .download').attr('href', audio);
     
   player.load();
   player.ontimeupdate = initProgressBar;
+  player.onended = function () {
+  playerEnded(ID);
+};
+    
   initVolume();
   player.play();
   $('#podcastPlayer').attr('data-status', 'play');
-  $('body').addClass('player-active');
+  $('body').attr('data-player', 'active');
+}
+
+//Play
+var playButton = function() { 
+  //Stop playing
+  $('#podcastPlayer').attr('data-status', 'play');
+  player.play();
 }
 
 //Pause
-function pauseButton() { 
+var pauseButton = function() { 
   //Stop playing
   $('#podcastPlayer').attr('data-status', 'pause');
   player.pause();
+}
+
+// Stop
+var playerStop = function () { 
+  console.log('Stopping the player');
+  pauseButton();
+  $('body').removeAttr('data-player');
+}
+
+// Player Ended
+var playerEnded = function(ID) { 
+  console.log('Player Ended');
+  //Find new episode
+  $.ajax({
+    url: ajax_object.ajax_url,
+    method: 'POST',
+    data: {
+      action: 'get_next_post',
+      ID,
+    },
+  }).done(function (response) {
+    console.log(response);
+    let post = JSON.parse(response);
+    // Start Playing
+    if (post.ID) {
+      playButton(post.audio.url, post.title, post.ID);
+    } else { 
+      playerStop();
+    }
+  });
+}
+
+// Check Play/Pause
+var checkPlayPause = function () {
+  let ID = $('#podcastPlayer').attr('data-id');
+  let status = $('#podcastPlayer').attr('data-status');
+  
+  $('.episode.playing').removeClass('playing');
+  $('.episode.paused').removeClass('paused');
+  if (status == 'play') {
+    //Play
+    $('.episode[data-id=' + ID + ']').addClass('playing');
+  } else { 
+    //Pause
+    $('.episode[data-id=' + ID + ']').addClass('paused');
+  }
 }
 
 //Calculate Total Value

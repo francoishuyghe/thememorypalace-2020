@@ -118,6 +118,8 @@
 
     // PLAYING
     &.playing{
+        border: 1px solid theme-color(primary);
+
         .play{
             opacity: 1;
             background-image: url('../images/audiowaves.gif');
@@ -137,6 +139,20 @@
             }
         }
     }
+
+    // PLAYING
+    &.paused{
+        border: 1px solid theme-color(primary);
+
+        .play{
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
 
 .featured .episode{
@@ -146,6 +162,7 @@
     padding: 0;
     margin-bottom: 0;
     text-align: center;
+    border: 0!important;
 
     .info{
         padding-left: 0;

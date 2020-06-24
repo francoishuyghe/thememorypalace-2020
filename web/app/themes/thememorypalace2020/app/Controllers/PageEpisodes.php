@@ -11,7 +11,7 @@ class PageEpisodes extends Controller
     public function episodes() {
 	    $args = array(
 	    	'post_type' => 'post',
-			'posts_per_page' => 18,
+			'posts_per_page' => -1,
 			'cat' => 249,
 			'post_status' => 'publish'
 	    );

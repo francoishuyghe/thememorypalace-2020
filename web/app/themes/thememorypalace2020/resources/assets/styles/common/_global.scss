@@ -219,7 +219,7 @@ img{
     }
 }
 
-.player-active{
+body[data-player]{
     #podcastPlayer{
         transform: translateY(0);
     }
