@@ -6,7 +6,7 @@
     }
 
     main section:first-child{
-        padding-top: 50px;
+        padding-top: 100px;
 
         @include media-breakpoint-up(md){
             padding-top: 95px;
@@ -70,6 +70,10 @@
         #latestEpisode{
             background-color: rgba(theme-color(white), .5);
             order: 1;
+
+            .info{
+                padding: $grid-gutter / 2 0 0;
+            }
         }
     }
 

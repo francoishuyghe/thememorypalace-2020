@@ -8,9 +8,18 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 
     .content{
         width: 100%;
+    }
+}
+
+h1{
+    font-size: 1.8em;
+
+    @include media-breakpoint-up(md){
+        font-size: 2.5rem;
     }
 }
 
@@ -67,9 +76,13 @@ img{
     z-index: 99;
     color: theme-color(white);
     background-color: theme-color(primary);
-    padding: $grid-gutter / 2;
+    padding: 10px $grid-gutter / 2;
     transform: translateY(100%);
     transition: .5s;
+
+    @include media-breakpoint-up(md){
+        padding: $grid-gutter / 2;
+    }
     
     .fa-pause{
         display: none;
@@ -100,6 +113,7 @@ img{
     .container{
         display: flex;
         flex-flow: row wrap;
+        padding: 0
     }
     
     .title{
@@ -108,23 +122,39 @@ img{
     }
     
     .playback{
-        margin-right: $grid-gutter;
+        margin-right: $grid-gutter / 2;
 
         a{
-            margin-right: $grid-gutter / 2;
+            margin-right: 10px;
+        }
+
+        @include media-breakpoint-up(md){
+            margin-right: $grid-gutter;
+
+            a{
+                margin-right: $grid-gutter / 2;
+            }
         }
     }
 
     .status{
         flex: 1;
-        margin-right: $grid-gutter;
         display: flex;
         justify-content: center;
+        
+        @include media-breakpoint-up(md){
+            margin-right: $grid-gutter;
+        }
 
         .timing{
-            width: 100px;
-            text-align: right;
-            padding-right: 10px;
+            display: none;
+
+            @include media-breakpoint-up(md){
+                display: block;
+                width: 100px;
+                text-align: right;
+                padding-right: 10px;
+            }
         }
 
         .playbar{
@@ -216,6 +246,14 @@ img{
 
     audio{
         display: none;
+    }
+
+    .extra{
+        display: none;
+
+        @include media-breakpoint-up(md){
+            display: block;
+        }
     }
 }
 

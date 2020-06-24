@@ -84,6 +84,8 @@
         display: flex;
         flex-direction: column;
         padding-left: $grid-gutter / 2;
+        hyphens: manual;
+        overflow: hidden;
 
         @include media-breakpoint-up(md){
             padding-left: $grid-gutter;
