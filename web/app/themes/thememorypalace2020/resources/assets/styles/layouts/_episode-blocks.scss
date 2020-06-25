@@ -216,6 +216,8 @@
     
                 .play{
                     background: theme-color(primary);
+                    font-size: 30px;
+                    padding-left: 7px;
 
                     &:hover{
                         background: rgba(theme-color(primary), .7);

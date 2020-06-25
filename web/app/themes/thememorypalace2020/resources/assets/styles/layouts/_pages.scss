@@ -72,6 +72,10 @@
         padding: $grid-gutter 0;
         background-color: theme-color(grey);
 
+        h2{
+            margin-bottom: $grid-gutter / 2;
+        }
+
         .container{
             max-width: 600px;
         }

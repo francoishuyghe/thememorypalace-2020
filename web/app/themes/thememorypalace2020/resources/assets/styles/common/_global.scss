@@ -77,6 +77,36 @@ img{
     height: auto;
 }
 
+//Searchbar
+.searchbar{
+    margin-bottom: $grid-gutter;
+
+    #ajaxsearchlite1{
+        .probox{
+            border: 1px solid theme-color(darkgrey);
+            background: transparent;
+        }
+    }
+}
+
+#ajaxsearchliteres1{
+    background-color: theme-color(white);
+    border: 1px solid theme0color(grey);
+
+    .results{
+        .item{
+            background-color: theme-color(white);
+            padding: 10px;
+
+            h3 a{
+                font-family: miller-display, monospace!important;
+                color: theme-color(primary);
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
 //PLAYER
 
 #podcastPlayer{
@@ -89,6 +119,7 @@ img{
     background-color: theme-color(primary);
     padding: 10px $grid-gutter / 2;
     transform: translateY(100%);
+    font-family: ApercuPro, sans-serif;
     transition: .5s;
 
     @include media-breakpoint-up(md){
@@ -129,21 +160,22 @@ img{
     
     .title{
         padding-bottom: 10px;
+        text-transform: uppercase;
         flex: 1 100%;
     }
     
     .playback{
         margin-right: $grid-gutter / 2;
 
-        a{
-            margin-right: 10px;
+        .play{
+            padding: 0 10px;
         }
 
         @include media-breakpoint-up(md){
             margin-right: $grid-gutter;
 
-            a{
-                margin-right: $grid-gutter / 2;
+            .play{
+                padding: 0 $grid-gutter / 2;
             }
         }
     }
@@ -162,6 +194,7 @@ img{
 
             @include media-breakpoint-up(md){
                 display: block;
+                font-size: .9em;
                 width: 100px;
                 text-align: right;
                 padding-right: 10px;
@@ -274,7 +307,6 @@ body[data-player]{
     }
 
     footer.content-info{
-        padding-bottom: $grid-gutter;
 
         @include media-breakpoint-up(md){
             margin-bottom: 110px;

@@ -17,6 +17,9 @@
 <section id="episodes">
     <div class="container">
         <h2>Episodes</h2>
+        <div class="searchbar">
+            {!! do_shortcode('[wpdreams_ajaxsearchlite]') !!}
+        </div>
         @foreach ($episodes as $episode)
             @include('partials.episode-block')
         @endforeach
