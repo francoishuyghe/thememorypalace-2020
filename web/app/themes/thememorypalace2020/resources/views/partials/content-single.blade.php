@@ -10,6 +10,7 @@
   <div class="container">
       <article {!! post_class() !!}>
         <div class="entry-content">
+          <p>Published on {{ get_the_date('', $episode->ID) }} </p>
           @php the_content() @endphp
           <div class="notes">
             {!! get_field('episodes_text', 'option') !!}

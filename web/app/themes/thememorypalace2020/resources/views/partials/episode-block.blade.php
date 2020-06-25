@@ -33,18 +33,20 @@ if($postTags){
     </a>
 
     <div class="info">
-        <div class="play-wrap">
-            <div class="play">
-                <i class="fas fa-play"></i>
-                <i class="fas fa-pause"></i>
-            </div>
-        </div>
-        <div class="header">
-            {{ get_the_date('', $episode->ID) }} @if($audio) | {{ $metadata['length_formatted'] }}@endif
-        </div>
         <div class="title">
             <h5>Episode {{ get_field('episode_number', $episode->ID) }}</h5>
             <h4><a href="{{ get_permalink($episode)}}" >{{ $episode->post_title }}</a></h4>
+        </div>
+        <div class="player">
+            <div class="play-wrap">
+                <div class="play">
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-pause"></i>
+                </div>
+            </div>
+            <div class="length">
+                @if($audio){{ $metadata['length_formatted'] }}@endif
+            </div>
         </div>
     </div>
 </div>

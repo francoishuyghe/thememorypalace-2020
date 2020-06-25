@@ -5,9 +5,10 @@
     margin-bottom: $grid-gutter / 2;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     display: flex;
+    align-items: center;
 
     .thumbnail-wrap{
-        min-width: 100px;
+        min-width: 150px;
     }
 
     .fa-pause{
@@ -30,17 +31,6 @@
                     transform: scale(1.05);
                 }
             }
-        }
-
-        .play{
-            opacity: 0;
-            transition: .25s;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: $white;
-            font-size: 40px;
         }
 
         .white{
@@ -74,9 +64,6 @@
     }
 
     .info{
-        flex: 1;
-        display: flex;
-        flex-direction: column;
         padding-left: $grid-gutter / 2;
         hyphens: manual;
         overflow: hidden;
@@ -85,17 +72,56 @@
             padding-left: $grid-gutter;
         }
 
-        .play-wrap{
-            display: none;
-        }
+        .player{
+            display: flex;
+            align-items: center;
 
-        .header{
-            font-size: .8em;
-            padding-bottom: 10px;
+            .play-wrap{
+                display: block;
+                width: $grid-gutter;
+                
+                .play{
+                    position: relative;
+                    border: 1px solid theme-color(primary);
+                    width: 100%;
+                    height: 0;
+                    padding-top: 100%;
+                    border-radius: 100%;
+                    cursor: pointer;
+                    transition: .5s;
+    
+                    i{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        padding-top: 2px;
+                        padding-left: 4px;
+                    }
+
+                    &:hover{
+                        background: theme-color(beige);
+                    }
+                }
+            }
+
+            .length{
+                flex: 1;
+                padding-left: 10px;
+            }
         }
 
         .title{
-            flex: 1;
+            flex: 1 100%;
+
+            h5{
+                margin-bottom: 5px;
+            }
+
+            h4{
+                font-size: 1.7em;
+                margin-bottom: 10px;
+            }
 
             a{
                 text-decoration: none;
@@ -164,49 +190,42 @@
         padding-left: 0;
         padding-bottom: 20px;
         display: flex;
-        flex-flow: row;
-        justify-content: center;
+        flex-flow: row-reverse;
+        align-items: center;
 
         .title{
             flex: 1;
             padding-left: 20px;
-        }
 
-        .play-wrap{
-            display: block;
-            width: 70px;
-
-            .play{
-                position: relative;
-                background: theme-color(primary);
-                width: 100%;
-                height: 0;
-                padding-top: 100%;
-                border-radius: 100%;
-                cursor: pointer;
-
-                i{
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
+            h5{
+                color: theme-color(primary);
+                margin-bottom: 0;
+                white-space: nowrap;
+            }
+    
+            h4{
+                color: theme-color(primary);
+                font-size: 2em;
+                margin-bottom: 0;
             }
         }
 
-        h5{
-            color: theme-color(primary);
-            margin-bottom: 5px;
-            white-space: nowrap;
-        }
+        .player{
+            .play-wrap{
+                width: 70px;
+    
+                .play{
+                    background: theme-color(primary);
 
-        h4{
-            color: theme-color(primary);
-            font-size: 2em;
-        }
+                    &:hover{
+                        background: rgba(theme-color(primary), .7);
+                    }
+                }
+            }
 
-        .header{
-            display: none;
+            .length{
+                display: none;
+            }
         }
     }
 
