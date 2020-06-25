@@ -133,7 +133,16 @@
 
 
 // Episodes page
+.page.episodes{
+    #intro{
+        margin: $grid-gutter * 2 auto;
+        max-width: 800px;
+    }
+}
+
 #archive{
+    margin-top: $grid-gutter;
+
     h2{
         margin-bottom: 10px;
     }

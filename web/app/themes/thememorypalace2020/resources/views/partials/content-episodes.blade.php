@@ -1,5 +1,6 @@
 <section id="intro">
     @php the_content() @endphp
+    <a class="button dark shuffle">Play a Random Episode</a>
 </section>
 
 <section id="archive">
