@@ -1,7 +1,8 @@
 //All Pages
-.page{
+.page,
+.single{
     .content{
-        padding: $grid-gutter 0 0;
+        //padding: $grid-gutter 0 0;
         width: 100%;
     }
 
@@ -53,18 +54,12 @@
             order: 2;
 
             .intro-wrap{
-                max-width: 500px;
+                max-width: 400px;
             }
 
             @include media-breakpoint-up(md){
                 order: 1;
             }
-        }
-
-        .shuffle{
-            border: 1px solid theme-color(white);
-            background: transparent;
-            cursor: pointer;
         }
 
         #latestEpisode{

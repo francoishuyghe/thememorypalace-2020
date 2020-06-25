@@ -21,7 +21,7 @@
             @include('partials.episode-block')
         @endforeach
         <div class="episodes-footer">
-            <a class="button" href="/episodes">More Episodes</a>
+            <a class="button dark" href="/episodes">More Episodes</a>
         </div>
     </div>
 </section>

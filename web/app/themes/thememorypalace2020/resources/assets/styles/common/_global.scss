@@ -24,9 +24,11 @@ h1{
 }
 
 h2{
-    font-size: 1.5em;
+    font-family: ApercuPro, sans-serif;
+    color: theme-color(black);
+    font-size: 1em;
+    padding-bottom: 5px;
     margin-bottom: $grid-gutter;
-    font-size: 1.2em;
     text-transform: uppercase;
     border-bottom: 1px solid grey;
 }
@@ -46,13 +48,23 @@ a{
     &.button{
         display: inline-block;
         font-family: ApercuPro, sans-serif;
-        background-color: theme-color(black);
+        border: 1px solid theme-color(white);
         color: theme-color(white);
-        padding: 1em 2em;
+        padding: .5em 1em;
         border-radius: 2.5em;
         text-transform: uppercase;
         text-decoration: none;
+        cursor: pointer;
         transition: .25s;
+
+        &.dark{
+            border: 1px solid theme-color(primary);
+            color: theme-color(primary);
+
+            &:hover{
+                color: theme-color(white);
+            }
+        }
 
         &:hover{
             text-decoration: none;

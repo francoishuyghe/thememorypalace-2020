@@ -3,31 +3,36 @@
         margin-bottom: 0;
     }
 
+    main .container{
+        max-width: 800px;
+        padding: $grid-gutter 0;
+    }
+
     #top{
-        @extend .colored;
         background-color: theme-color(primary);
+        @extend .colored;
         color: theme-color(white);
-        height: 100vh;
         display: flex;
         flex-direction: row;
-        
-        #episode,
-        #content{
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: $grid-gutter;
-            flex-direction: column;
-        }
-
-        #episode{
-            background-color: rgba(theme-color(white), .5);
 
             .episode{
                 background-color: transparent;
                 box-shadow: 0 0;
+                margin-bottom: 0;
+                padding: 0;
+
+                .thumbnail-wrap{
+                    width: 200px;
+                }
             }
+    }
+
+    #episodeContent{
+
+        .notes{
+            margin-top: $grid-gutter;
+            padding-top: $grid-gutter;
+            border-top: 1px solid theme-color(darkgrey);
         }
     }
 }
