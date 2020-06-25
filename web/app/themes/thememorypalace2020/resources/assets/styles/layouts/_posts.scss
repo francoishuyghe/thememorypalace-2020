@@ -21,6 +21,47 @@
                 margin-bottom: 0;
                 padding: 0;
 
+                &.playing,
+                &.paused{
+                    border: 0;
+                }
+
+                .thumbnail{
+                    cursor: default;
+                    
+                    &:hover{
+                        .white{
+                            .image{
+                                transform: scale(1);
+                            }
+                        }
+                    }
+                }
+
+                .title{
+                    h5{
+                        color: theme-color(white);
+                    }
+
+                    h4 a{
+                        cursor: default;
+
+                        &:hover{
+                            color: theme-color(white);
+                        }
+                    }
+                }
+
+                .info{
+                    .play{
+                        border-color: theme-color(white);
+
+                        &:hover{
+                            background-color: rgba(theme-color(white), .2);
+                        }
+                    }
+                }
+
                 .thumbnail-wrap{
                     width: 200px;
                 }

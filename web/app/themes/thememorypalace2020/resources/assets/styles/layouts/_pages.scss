@@ -110,6 +110,11 @@
         }
 
         .links{
+            h2{
+                border-bottom: 0;
+                margin-bottom: 0;
+            }
+
             ul{
                 padding: 0;
                 list-style: none;
@@ -120,7 +125,6 @@
 
                 a{
                     text-decoration: none;
-                    text-transform: uppercase;
 
                     &:hover{
                         text-decoration: underline;
@@ -227,11 +231,12 @@
         .episode{
             width: 100%;
             background-color: theme-color(grey);
+            align-items: inherit;
         }
 
         @include media-breakpoint-up(md){
             .gutter-sizer{
-                width: 3%
+                width: 4.99%
             }
 
             .episode{

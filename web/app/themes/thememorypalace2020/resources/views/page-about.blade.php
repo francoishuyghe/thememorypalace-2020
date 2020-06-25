@@ -11,6 +11,7 @@
           </div>
           @if($data['links'])
           <div class="links">
+            <h2>Press</h2>
             <ul>
             @foreach ($data['links'] as $link)
               <li>
