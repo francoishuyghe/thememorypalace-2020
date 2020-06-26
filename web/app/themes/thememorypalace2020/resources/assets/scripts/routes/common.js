@@ -104,6 +104,8 @@ function initCommon() {
   
 function initPages() {
   console.log('Rerun Init')
+  $(window).scrollTop(0);
+  $('body').css('height', 'auto');
   initCommon();
 
   if (document.querySelector('.page.episodes')) {
@@ -235,7 +237,6 @@ var playerEnded = function(ID) {
       ID,
     },
   }).done(function (response) {
-    console.log(response);
     let post = JSON.parse(response);
     // Start Playing
     if (post.ID) {

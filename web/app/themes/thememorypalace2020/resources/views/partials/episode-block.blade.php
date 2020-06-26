@@ -17,7 +17,7 @@ if($postTags){
 }
 @endphp
 
-<div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }}"
+<div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }} @if(in_category(1363, $episode->ID)) favorite @endif"
     data-audio="{{ $audio['url'] }}"
     data-title="EPISODE {{ get_field('episode_number', $episode->ID) }}: {{ $episode->post_title }}"
     data-id="{{ $episode->ID }}">

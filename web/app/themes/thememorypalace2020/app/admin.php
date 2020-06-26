@@ -39,7 +39,7 @@ $rewrite =  array(
 $labels = array(
     'name'                       => _x( 'Tags', 'Taxonomy General Name', 'hierarchical_tags' ),
     'singular_name'              => _x( 'Tag', 'Taxonomy Singular Name', 'hierarchical_tags' ),
-    'menu_name'                  => __( 'Taxonomy', 'hierarchical_tags' ),
+    'menu_name'                  => __( 'Tags', 'hierarchical_tags' ),
     'all_items'                  => __( 'All Tags', 'hierarchical_tags' ),
     'parent_item'                => __( 'Parent Tag', 'hierarchical_tags' ),
     'parent_item_colon'          => __( 'Parent Tag:', 'hierarchical_tags' ),
@@ -60,10 +60,10 @@ $labels = array(
     'hierarchical'              => true, // Was false, now set to true
     'query_var'                 => 'tag',
     'labels'                    => $labels,
-    'rewrite'                   => $rewrite,
     'public'                    => true,
     'show_ui'                   => true,
     'show_admin_column'         => true,
     '_builtin'                  => true,
+    'rewrite'                   => $rewrite,
   ) );
 });

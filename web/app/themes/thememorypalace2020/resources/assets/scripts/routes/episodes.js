@@ -22,9 +22,12 @@ export default {
     
     // Isotope Init
     let $grid = $('.episodes');
+
+    $grid.on('arrangeComplete', function () {
+      $('.episodes').addClass('active');
+    } );
       
-    setTimeout(() => {
-      $grid.isotope({
+    $grid.isotope({
         // options
         itemSelector: '.episode',
         layoutMode: 'fitRows',
@@ -32,8 +35,7 @@ export default {
         fitRows: {
           gutter: '.gutter-sizer',
         },
-      });  
-    }, 500);
+    });
 
     // filter items on button click
     let $reset = $('.reset');
@@ -46,11 +48,17 @@ export default {
     });
 
     // Display favorites
-    $('a.favorites').click(function () { 
-      $grid.isotope({ filter: 'favorite' });
-    }).
+    $('a.favorites').click(function () {
+      if ($(this).hasClass('active')) {
+        $grid.isotope({ filter: '*' });
+      } else {
+        $grid.isotope({ filter: '.favorite' });
+      }
 
-    $('.tag-cat').on('click', 'button', function () {
+      $(this).toggleClass('active');
+    });
+
+    $('.tag-cat button').click(function () {
       if ($(this).hasClass('active')) {
         $buttons.removeClass('active');
         $reset.removeClass('active');

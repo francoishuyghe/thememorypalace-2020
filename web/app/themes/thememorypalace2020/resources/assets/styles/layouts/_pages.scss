@@ -159,8 +159,20 @@
         margin-bottom: $grid-gutter / 2;
 
         .header{
-            margin-bottom: 10px;
             display: flex;
+
+            .favorites{
+                border-radius: 1.5em;
+
+                &:hover,
+                &.active:hover{
+                    background-color: rgba(theme-color(beige), .5);
+                }
+
+                &.active{
+                    background-color: theme-color(beige);
+                }
+            }
 
             .reset{
                 flex: 1;
@@ -168,10 +180,23 @@
                 margin-right: 0;
             }
 
+            .tag-title{
+                &:hover,
+                &.active:hover{
+                    background-color: rgba(theme-color(beige), .5);
+                }
+
+                &.active{
+                    background-color: theme-color(beige);
+                }
+            }
+
             a{
                 cursor: pointer;
                 display: inline-block;
                 margin-right: $grid-gutter / 2;
+                padding: .25em 1em;
+                transition: .25s;
 
                 .fas{
                     padding-left: 5px;
@@ -235,6 +260,13 @@
     }
 
     .episodes{
+        opacity: 0;
+        transition: .5s;
+
+        &.active{
+            opacity: 1;
+        }
+
         .episode{
             width: 100%;
             background-color: theme-color(grey);
