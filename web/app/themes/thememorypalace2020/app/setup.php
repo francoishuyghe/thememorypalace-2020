@@ -171,6 +171,7 @@ function get_random_post() {
         'title' => 'EPISODE ' . get_field('episode_number', $ajaxposts[0]->ID) . ': ' . $ajaxposts[0]->post_title,
         'audio' => get_field('episode_audio', $ajaxposts[0]->ID), 
         'ID' => $ajaxposts[0]->ID,
+        'permalink' => get_permalink($ajaxposts[0]->ID),
     ];
     echo json_encode( $episode );
     exit;
@@ -195,6 +196,7 @@ function get_next_episode() {
         'title' => 'EPISODE ' . get_field('episode_number', $next_post->ID) . ': ' . $next_post->post_title,
         'audio' => get_field('episode_audio', $next_post->ID),
         'ID' => $next_post->ID,
+        'permalink' => get_permalink($next_post->ID),
     ];
     echo json_encode( $episode );
     exit;

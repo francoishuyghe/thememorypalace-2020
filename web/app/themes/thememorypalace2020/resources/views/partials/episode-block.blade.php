@@ -15,14 +15,17 @@ if($postTags){
         $tagSlugs .= ' ' . $tag->slug;
     }
 }
+
+$permalink = get_permalink($episode);
 @endphp
 
 <div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }} @if(in_category(1363, $episode->ID)) favorite @endif"
     data-audio="{{ $audio['url'] }}"
     data-title="EPISODE {{ get_field('episode_number', $episode->ID) }}: {{ $episode->post_title }}"
-    data-id="{{ $episode->ID }}">
+    data-id="{{ $episode->ID }}"
+    data-permalink="{{ $permalink }}">
 
-    <a href="{{ get_permalink($episode)}}" >
+    <a href="{{ $permalink }}" >
         <div class="thumbnail-wrap">
             <div class="thumbnail {{ the_field('color', $episode->ID ) }}">
                 <div class="white">
@@ -35,7 +38,7 @@ if($postTags){
     <div class="info">
         <div class="title">
             <h5>Episode {{ get_field('episode_number', $episode->ID) }}</h5>
-            <h4><a href="{{ get_permalink($episode)}}" >{{ $episode->post_title }}</a></h4>
+            <h4><a href="{{ $permalink }}" >{{ $episode->post_title }}</a></h4>
         </div>
         <div class="player">
             <div class="play-wrap">

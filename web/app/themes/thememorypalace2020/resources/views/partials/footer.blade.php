@@ -1,6 +1,6 @@
 <div id="podcastPlayer">
   <div class="container">
-    <div class="title"></div>
+    <a href="" class="episode-link"></a>
       <div class="playback">
         <a class="minus15"><i class="fal fa-undo"></i></a>
         <a class="play">
@@ -34,6 +34,8 @@
     <source src="" type="audio/mpeg" id="playerSource">
   </audio>
 </div>
+
+
 <footer class="content-info">
   <div class="container">
     <div class="row">

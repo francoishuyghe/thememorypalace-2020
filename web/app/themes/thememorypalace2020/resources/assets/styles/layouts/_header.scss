@@ -9,8 +9,11 @@
   flex-flow: row wrap;
   align-items: center;
   padding: 10px $grid-gutter / 2;
-  justify-content: space-between;
   margin-bottom: $grid-gutter;
+
+  @include media-breakpoint-up(md){
+    justify-content: space-between;
+  }
 
   &.fixed{
     position: fixed;
