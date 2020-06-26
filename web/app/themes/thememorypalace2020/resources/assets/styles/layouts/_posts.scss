@@ -28,7 +28,7 @@
 
                 .thumbnail{
                     cursor: default;
-                    
+
                     &:hover{
                         .white{
                             .image{
@@ -52,15 +52,15 @@
                     }
                 }
 
-                .info{
-                    .play{
-                        border-color: theme-color(white);
+                // .info{
+                //     .play{
+                //         border-color: theme-color(white);
 
-                        &:hover{
-                            background-color: rgba(theme-color(white), .2);
-                        }
-                    }
-                }
+                //         &:hover{
+                //             background-color: rgba(theme-color(white), .2);
+                //         }
+                //     }
+                // }
 
                 .thumbnail-wrap{
                     width: 200px;

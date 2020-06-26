@@ -45,6 +45,11 @@ export default {
       $grid.isotope({ filter: '*' })
     });
 
+    // Display favorites
+    $('a.favorites').click(function () { 
+      $grid.isotope({ filter: 'favorite' });
+    }).
+
     $('.tag-cat').on('click', 'button', function () {
       if ($(this).hasClass('active')) {
         $buttons.removeClass('active');

@@ -1,17 +1,23 @@
 body{
     font-family: miller-display, monospace;
     background-color: theme-color(white);
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
 }
 
 .content-wrap{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    flex: 1;
+    
     .content{
         width: 100%;
     }
+}
+
+.page .content-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1{
