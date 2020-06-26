@@ -8,7 +8,12 @@ export default {
       let thisTag = $(this).data('tags');
       let theTags = $('.tag-cat[data-tags="' + thisTag + '"]')
   
-      $(this).toggleClass('active');
+      if ($(this).hasClass('active')) {
+        $('.tag-title.active').removeClass('active');
+      } else { 
+        $('.tag-title.active').removeClass('active');
+        $(this).addClass('active');
+      }
       
       if (theTags.hasClass('active')) {
         $('.tag-cat').removeClass('active');
