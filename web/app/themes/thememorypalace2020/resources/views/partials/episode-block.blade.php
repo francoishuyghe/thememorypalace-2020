@@ -8,10 +8,23 @@ if($audio)
     $metadata = wp_read_audio_metadata( $audio_file_path );
 }
 
-$postTags = get_the_tags($episode->ID);
+$postHistory = get_the_terms($episode->ID, 'history');
+$postPlaces = get_the_terms($episode->ID, 'places');
+$postTopics = get_the_terms($episode->ID, 'topics');
+
 $tagSlugs = '';
-if($postTags){
-    foreach ($postTags as $tag) {
+if($postHistory){
+    foreach ($postHistory as $tag) {
+        $tagSlugs .= ' ' . $tag->slug;
+    }
+}
+if($postPlaces){
+    foreach ($postPlaces as $tag) {
+        $tagSlugs .= ' ' . $tag->slug;
+    }
+}
+if($postTopics){
+    foreach ($postTopics as $tag) {
         $tagSlugs .= ' ' . $tag->slug;
     }
 }

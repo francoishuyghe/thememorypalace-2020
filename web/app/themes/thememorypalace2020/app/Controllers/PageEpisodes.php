@@ -12,7 +12,6 @@ class PageEpisodes extends Controller
 	    $args = array(
 	    	'post_type' => 'post',
 			'posts_per_page' => -1,
-			'cat' => 249,
 			'post_status' => 'publish'
 	    );
 	    $the_query = new WP_Query( $args );

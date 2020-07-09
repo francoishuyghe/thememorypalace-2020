@@ -6,37 +6,59 @@
 <section id="archive">
     <h2 class="long">Archive</h2>
     <div id="tags">
-        {{-- Get all Parents tags --}}
+    {{-- Get all Parents tags --}}
         @php 
-            $args = array(
-                'orderby' => 'name',
-                'order' => 'ASC',
-                'include' => [1359, 1360, 1361]
-                );
-            $parent_tags = get_tags($args);
+        $places = get_terms(array(
+            'taxonomy' => 'places',
+            'hide_empty' => true,
+        ));
+
+        $history = get_terms(array(
+            'taxonomy' => 'history',
+            'hide_empty' => true,
+        ));
+
+        $topics = get_terms(array(
+            'taxonomy' => 'topics',
+            'hide_empty' => true,
+        ));
+
+        $categories = [
+            array(
+                'name' => 'History',
+                'slug' => 'history',
+                'terms' => $history
+            ),
+            array(
+                'name' => 'Places',
+                'slug' => 'places',
+                'terms' => $places
+        ),
+            array(
+                'name' => 'Topics',
+                'slug' => 'topics',
+                'terms' => $topics
+        ),
+        ]
+        
         @endphp
 
         <div class="header">
             <a class="favorites">Favorites</a>
-            @foreach ($parent_tags as $parent_tag)
-                <a class="tag-title" data-tags="{{ $parent_tag->slug }}">{{ $parent_tag->name }} <i class="fas fa-sort-down"></i><i class="fas fa-sort-up"></i></a>
+            @foreach ($categories as $category)
+                <a class="tag-title" data-tags="{{ $category['slug'] }}">{{ $category['name'] }} <i class="fas fa-sort-down"></i><i class="fas fa-sort-up"></i></a>
             @endforeach
             <a class="reset">RESET</a>
         </div>
-        @foreach ($parent_tags as $parent_tag)
+        @foreach ($categories as $category)
             {{-- If they have children, display them --}}
-            @php
-            $children_tags = get_tags(array( 'child_of' => $parent_tag->term_id ));
-            @endphp
-            @if($children_tags)
-            <div class="tag-cat" data-tags="{{ $parent_tag->slug }}">
-                @foreach ($children_tags as $tag)
+            <div class="tag-cat" data-tags="{{ $category['slug'] }}">
+                @foreach ($category['terms'] as $tag)
                     @if($tag->count > 2)
                         <button data-filter=".{{$tag->slug}}">{{ $tag->name }}</a>
                     @endif
                 @endforeach
             </div>
-            @endif
         @endforeach
     </div>
     <div class="episodes">
