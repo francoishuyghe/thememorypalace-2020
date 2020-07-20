@@ -17,6 +17,8 @@ $theme-colors: (
   blue: #2B74B8,
   darkblue: #47538E,
   violet: #8567C1,
+  pink: #DD7A98,
+  brown: #927D62
 );
 
 $grid-gutter: 50px;
@@ -52,6 +54,12 @@ $navbar-light-toggler-icon-bg: none;
   }
   &.orange{
       background: theme-color(orange);
+  }
+  &.brown{
+      background: theme-color(brown);
+  }
+  &.pink{
+      background: theme-color(pink);
   }
 }
 
