@@ -45,25 +45,33 @@ export default {
     // filter items on button click
     let $reset = $('.reset');
     let $buttons = $('.tag-cat button');
+    let $favorites = $('a.favorites');
 
     $reset.click(function () { 
       $buttons.removeClass('active');
       $reset.removeClass('active');
+      $favorites.removeClass('active');
       $grid.isotope({ filter: '*' })
     });
 
     // Display favorites
-    $('a.favorites').click(function () {
+    $favorites.click(function () {
       if ($(this).hasClass('active')) {
         $grid.isotope({ filter: '*' });
+        $reset.removeClass('active');
       } else {
         $grid.isotope({ filter: '.favorite' });
+        $reset.addClass('active');
       }
 
-      $(this).toggleClass('active');
+      $buttons.removeClass('active');
+      $favorites.toggleClass('active');
     });
 
+    // Filter by tags
     $('.tag-cat button').click(function () {
+      $favorites.removeClass('active');
+
       if ($(this).hasClass('active')) {
         $buttons.removeClass('active');
         $reset.removeClass('active');

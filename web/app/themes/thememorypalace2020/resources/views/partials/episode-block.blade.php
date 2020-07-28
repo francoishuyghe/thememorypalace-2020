@@ -1,35 +1,35 @@
 @php
-$audio = get_field('episode_audio', $episode->ID);
-$metadata = [];
+    $audio = get_field('episode_audio', $episode->ID);
+    $metadata = [];
 
-if($audio)
-{
-    $audio_file_path = get_attached_file( $audio['ID'] );
-    $metadata = wp_read_audio_metadata( $audio_file_path );
-}
-
-$postHistory = get_the_terms($episode->ID, 'history');
-$postPlaces = get_the_terms($episode->ID, 'places');
-$postTopics = get_the_terms($episode->ID, 'topics');
-
-$tagSlugs = '';
-if($postHistory){
-    foreach ($postHistory as $tag) {
-        $tagSlugs .= ' ' . $tag->slug;
+    if($audio)
+    {
+        $audio_file_path = get_attached_file( $audio['ID'] );
+        $metadata = wp_read_audio_metadata( $audio_file_path );
     }
-}
-if($postPlaces){
-    foreach ($postPlaces as $tag) {
-        $tagSlugs .= ' ' . $tag->slug;
-    }
-}
-if($postTopics){
-    foreach ($postTopics as $tag) {
-        $tagSlugs .= ' ' . $tag->slug;
-    }
-}
 
-$permalink = get_permalink($episode);
+    $postHistory = get_the_terms($episode->ID, 'history');
+    $postPlaces = get_the_terms($episode->ID, 'places');
+    $postTopics = get_the_terms($episode->ID, 'topics');
+
+    $tagSlugs = '';
+    if($postHistory){
+        foreach ($postHistory as $tag) {
+            $tagSlugs .= ' ' . $tag->slug;
+        }
+    }
+    if($postPlaces){
+        foreach ($postPlaces as $tag) {
+            $tagSlugs .= ' ' . $tag->slug;
+        }
+    }
+    if($postTopics){
+        foreach ($postTopics as $tag) {
+            $tagSlugs .= ' ' . $tag->slug;
+        }
+    }
+
+    $permalink = get_permalink($episode);
 @endphp
 
 <div class="episode episode-{{ $episode->ID }}{{ $tagSlugs }} @if(in_category(1363, $episode->ID)) favorite @endif"

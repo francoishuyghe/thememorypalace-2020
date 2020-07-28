@@ -6,7 +6,7 @@
         width: 100%;
 
         .container{
-            margin: $grid-gutter auto;
+            margin: 70px auto;
         }
     }
 
@@ -135,6 +135,7 @@
         display: flex;
         flex-flow: column;
         justify-content: space-between;
+        padding-right: $grid-gutter / 2;
 
         .intro{
             font-size: 20px;
@@ -193,14 +194,20 @@
             .favorites{
                 order: 1;
                 border-radius: 1.5em;
+                height: 2.25em;
 
-                &:hover,
-                &.active:hover{
+                &:hover{
                     background-color: rgba(theme-color(beige), .5);
                 }
 
+                &.active:hover{
+                    background-color: rgba(theme-color(beige), .5);
+                    color: theme-color(black);
+                }
+
                 &.active{
-                    background-color: theme-color(beige);
+                    background-color: theme-color(primary);
+                    color: theme-color(white);
                 }
 
                 @include media-breakpoint-up(md){
@@ -222,6 +229,8 @@
 
             .tag-title{
                 order: 3;
+                padding-bottom: .75em;
+
                 &:hover,
                 &.active:hover{
                     background-color: rgba(theme-color(beige), .5);
@@ -269,12 +278,12 @@
             }
 
             .reset{
-                opacity: 0;
+                display: none;
                 transition: .25s;
                 cursor: default;
 
                 &.active{
-                    opacity: 1;
+                    display: block;
                     cursor: pointer;
                 }
             }

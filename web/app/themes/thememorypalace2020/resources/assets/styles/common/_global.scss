@@ -93,6 +93,10 @@ img{
         .probox{
             border: 1px solid theme-color(darkgrey);
             background: transparent;
+
+            .promagnifier{
+                box-shadow: none;
+            }
         }
     }
 }
