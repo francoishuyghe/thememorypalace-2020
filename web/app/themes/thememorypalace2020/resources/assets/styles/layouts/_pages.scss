@@ -1,7 +1,8 @@
 //All Pages
 .page,
 .single,
-.search{
+.search,
+.archive{
     .content{
         //padding: $grid-gutter 0 0;
         width: 100%;
@@ -176,10 +177,9 @@
         margin: $grid-gutter * 2 auto;
         max-width: 800px;
     }
-}
 
-#archive{
-    margin-top: $grid-gutter;
+    #archive{
+        margin-top: $grid-gutter;
 
     h2{
         margin-bottom: 10px;
@@ -351,6 +351,7 @@
             }
         }
     }
+    }
 }
 
 // Search
@@ -358,4 +359,20 @@
     .episode{
         @extend .col-md-6;
     }
+} 
+
+//Archive
+.archive.category{
+    #intro{
+        padding-bottom: $grid-gutter;
+    }
+
+    // .episodes{
+    //     @extend .row;
+
+    //     .episode{
+    //         @extend .col-md-4;
+    //         flex-flow: column;
+    //     }
+    // }
 }
