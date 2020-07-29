@@ -1,6 +1,7 @@
 //All Pages
 .page,
-.single{
+.single,
+.search{
     .content{
         //padding: $grid-gutter 0 0;
         width: 100%;
@@ -10,7 +11,7 @@
         }
     }
 
-    main section:first-child{
+    main > .container { 
         padding-top: 100px;
 
         @include media-breakpoint-up(md){
@@ -349,5 +350,12 @@
                 }
             }
         }
+    }
+}
+
+// Search
+.search{
+    .episode{
+        @extend .col-md-6;
     }
 }
