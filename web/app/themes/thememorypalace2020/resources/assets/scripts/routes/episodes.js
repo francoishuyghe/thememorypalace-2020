@@ -56,6 +56,10 @@ export default {
 
     // Display favorites
     $favorites.click(function () {
+      //Close the drawers
+      $('.tag-cat').removeClass('active');
+      $('.tag-title').removeClass('active');
+      
       if ($(this).hasClass('active')) {
         $grid.isotope({ filter: '*' });
         $reset.removeClass('active');

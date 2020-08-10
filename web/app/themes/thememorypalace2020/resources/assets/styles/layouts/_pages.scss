@@ -243,7 +243,9 @@
 
             .tag-title{
                 order: 3;
-                padding-bottom: .75em;
+                margin-bottom: .75em;
+                border-radius: 1.5em;
+                height: 2.25em;
 
                 &:hover,
                 &.active:hover{
