@@ -52,6 +52,7 @@ $rewrite =  array(
 add_action( 'init', __NAMESPACE__ . '\\create_history_taxonomy', 0 );
 add_action( 'init', __NAMESPACE__ . '\\create_topics_taxonomy', 0 );
 add_action( 'init', __NAMESPACE__ . '\\create_places_taxonomy', 0 );
+add_action( 'init', __NAMESPACE__ . '\\create_search_taxonomy', 0 );
  
 //create a custom taxonomy name it topics for your posts
  
@@ -123,6 +124,30 @@ function create_places_taxonomy() {
     'show_in_rest' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'place' ),
+  ));
+ 
+}
+
+// These tags will not show up in the front end
+function create_search_taxonomy() {
+ 
+  $labels = array(
+    'name' => _x( 'Search Terms', 'taxonomy general name' ),
+    'singular_name' => _x( 'Search Term', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Terms' ),
+    'all_items' => __( 'All Search Terms' ),
+    'menu_name' => __( 'Search Terms' ),
+  );    
+ 
+  register_taxonomy('search_term',array('post'), array(
+    'hierarchical' => false,
+    'show_tagcloud' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'show_in_rest' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'search_term' ),
   ));
  
 }
