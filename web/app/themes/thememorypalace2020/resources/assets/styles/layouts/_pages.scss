@@ -19,6 +19,14 @@
             padding-top: 95px;
         }
     }
+
+    &.admin-bar{
+        .content{
+            .container{
+                margin: 100px auto $grid-gutter;
+            }
+        }
+    }
 }
 
 
@@ -229,15 +237,18 @@
                 }
             }
 
-            .reset{
-                order: 2;
-                flex: 1 0 70%;
-                text-align: right;
-                margin-right: 0;
+            .searchbar{
+                order: 4;
+                flex: 1 0 100%;
 
-                @include media-breakpoint-up(md){
+                @include media-breakpoint-up(lg){
                     order: 4;
                     flex: 1;
+
+                    #ajaxsearchlite1{
+                        max-width: 300px;
+                        float: right;
+                    }
                 }
             }
 

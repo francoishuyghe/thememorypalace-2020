@@ -48,7 +48,9 @@
             @foreach ($categories as $category)
                 <a class="tag-title" data-tags="{{ $category['slug'] }}">{{ $category['name'] }} <i class="fas fa-sort-down"></i><i class="fas fa-sort-up"></i></a>
             @endforeach
-            <a class="reset">RESET</a>
+            <div class="searchbar">
+                {!! do_shortcode('[wpdreams_ajaxsearchlite]') !!} 
+            </div>
         </div>
         @foreach ($categories as $category)
             {{-- If they have children, display them --}}

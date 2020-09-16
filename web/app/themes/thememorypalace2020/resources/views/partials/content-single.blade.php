@@ -1,7 +1,7 @@
 @include('partials.color-brightness')
 
+<div class="container">
 <section id="episodeContent">
-  <div class="container">
     <div class="row">
       <div class="col-md-4">
         @php $episode = $post; @endphp
@@ -19,5 +19,5 @@
         </div>
       </article>
     </div>
-  </div>
-</section>
+  </section>
+</div>
