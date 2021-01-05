@@ -78,7 +78,7 @@
   "dependencies": {
     "@swup/body-class-plugin": "^1.0.2",
     "@swup/ga-plugin": "^1.0.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bootstrap": "v4.3.1",
     "gsap": "^3.2.6",
     "isotope-layout": "^3.0.6",
