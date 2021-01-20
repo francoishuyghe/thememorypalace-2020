@@ -80,7 +80,7 @@
     "@swup/ga-plugin": "^1.0.1",
     "axios": "^0.18.1",
     "bootstrap": "v4.3.1",
-    "gsap": "^3.2.6",
+    "gsap": "^3.6.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.3.1",
     "js-yaml": "^3.13.1",
